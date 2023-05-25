@@ -1,0 +1,1189 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        script(src="http://code.jquery.com/jquery-latest.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js")
+        link(rel='stylesheet' type="text/css" media="all", href='./css/style00.css')
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet")
+        link(rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css")
+        link(rel="icon", sizes="48x48", type="image/png", href="./images/sangmooFavicon3.png")
+        script(src="./script/kioskProject.js")
+        //script(src="./script/kiosk2.js" defer)
+        title 5조 키오스크
+        style.
+            .emptyBox{ 
+                position: relative; 
+                left: 0px; top: -46px;
+                width: 200px; height: 55px; background: transparent; z-index: 10;
+                border: 0px solid transparent;
+            }
+    body
+        main
+            header
+                .main_logo_wrap
+                    img(class="main_logo_img", src="./images/logo.png", alt="logoImg")
+                .main_time_wrap
+                    .main_time_date
+                    .main_time_time 
+
+            section.main_table_wrap
+                .main_table_name 테이블명
+                .main_table_number 23
+            
+            section.main_cart_area#main_cart_area 
+                .main_cart_title 장바구니
+                .main_cart_list_area#main_cart_list_area 
+                    
+                .main_cart_total_amount_box 
+                    .main_cart_total_name 합계
+                    .main_cart_total_price#main_cart_total_price 0원
+                .main_cart_order_btn#main_cart_order_btn 주문하기
+
+            section.main_body_area#main_body_area 
+                nav.main_menuBar_area
+                    a.main_menuBar.main_menuBar_menu1(onclick="scrollToSection(event)" href="#main_menulist_title1") 점심 특선
+                    a.main_menuBar.main_menuBar_menu2(onclick="scrollToSection(event)" href="#main_menulist_title2") 대표 메뉴
+                    a.main_menuBar.main_menuBar_menu3(onclick="scrollToSection(event)" href="#main_menulist_title3") 세트 메뉴
+                    a.main_menuBar.main_menuBar_menu4(onclick="scrollToSection(event)" href="#main_menulist_title4") 단품 메뉴
+                    a.main_menuBar.main_menuBar_menu5(onclick="scrollToSection(event)" href="#main_menulist_title5") 사시미
+                    a.main_menuBar.main_menuBar_menu6(onclick="scrollToSection(event)" href="#main_menulist_title6") 사이드
+                    a.main_menuBar.main_menuBar_menu7(onclick="scrollToSection(event)" href="#main_menulist_title7") 주류
+                article.main_menulist_area#main_menulist_area 
+                    .main_menulist_wrap#main_menulist_wrap_area
+                        .main_menulist_title#main_menulist_title1 점심 특선
+                        .main_menulist_box_area#displayLunchSpecial 
+
+                        .main_menulist_title#main_menulist_title2 대표 메뉴
+                        .main_menulist_box_area#displayMainMenu 
+
+                        .main_menulist_title#main_menulist_title3 세트 메뉴
+                        .main_menulist_box_area#displaySetMenu 
+
+                        .main_menulist_title#main_menulist_title4 단품 메뉴
+                        .main_menulist_box_area#displaySingleMenu 
+
+                        .main_menulist_title#main_menulist_title5 사시미
+                        .main_menulist_box_area#displaySasimi 
+
+                        .main_menulist_title#main_menulist_title6 사이드
+                        .main_menulist_box_area#displaySideMenu 
+
+                        .main_menulist_title#main_menulist_title7 주류
+                        .main_menulist_box_area#displayDrinkMenu 
+
+            footer.main_footer_area
+                .main_staffCall_btn 직원 호출
+                .main_cart_btn#main_cart_call_btn 장바구니
+                .main_orderHistory_btn 주문내역
+
+            //- 직원호출 모달창 시작
+            section#modal_staffCall.modal_staffCall
+                .modal_staffCall_header_box
+                    .modal_staffCall_description 직원 호출 - 무엇을 도와드릴까요?
+                    #modal_staffCall_exist_btn.modal_staffCall_exist_btn 닫기
+                .modal_staffCall_content_box
+                    .modal_staffCall_choiceService_box
+                        .modal_staffCall_choiceService
+                            span 용품
+                            #modal_staffCall_serviceList_stuff.modal_staffCall_serviceList_box
+                        .modal_staffCall_choiceService
+                            span 리필
+                            #modal_staffCall_serviceList_refill.modal_staffCall_serviceList_box
+                        .modal_staffCall_choiceService
+                            span 기타
+                            #modal_staffCall_serviceList_etc.modal_staffCall_serviceList_box
+                    .modal_staffCall_showService_box
+                        .modal_staffCall_showChoice_box
+                            .modal_staffCall_guideWord 왼쪽에서<br>요청하실 항목을<br>선택 해 주세요.
+                        
+                        .modal_staffCall_choiceControl_box
+                            #modal_staffCall_removeAll_box.modal_staffCall_choiceControl_btn 전체 삭제
+                            #modal_staffCall_choiceEnd_box.modal_staffCall_choiceControl_btn 요청 하기
+            //- 직원호출 모달창 끝
+
+            //- 메뉴 상세페이지 시작
+            section.modal_selectMenu#modal_selectMenu 
+                .modal_selectMenu_exist_btn 닫기
+                .modal_selectMenu_description_box#modal_selectMenu_description_box 
+                    #insertImg.insertImg 
+                    .modal_selectMenu_description_area
+                        p.modal_selectMenu_name#modal_selectMenu_name 
+                        p.modal_selectMenu_structure#modal_selectMenu_structure 
+                        .modal_selectMenu_option_box 
+                            .modal_selectMenu_option_01.modal_selectMenu_option_all
+                                p.modal_selectMenu_option_description_all 와사비 빼주세요
+                                #modal_selectMenu_option_check_01.modal_selectMenu_option_check_all
+                            .modal_selectMenu_option_02.modal_selectMenu_option_all
+                                p.modal_selectMenu_option_description_all 오이 빼주세요 
+                                #modal_selectMenu_option_check_02.modal_selectMenu_option_check_all
+                        .modal_selectMenu_result_box
+                            span.modal_selectMenu_amount 금액
+                            span.modal_selectMenu_price#modal_selectMenu_price 9,900
+                            span.modal_selectMenu_krw 원
+                        #modal_selectMenu_cart_add_btn 장바구니 담기
+            //- 메뉴 상세페이지 끝
+
+            //- 결제 전 주문 확인페이지 시작
+            .modal_checkMenu#modal_checkMenu 
+                .modal_checkMenu_top
+                    .modal_checkMenu_information_text 주문 내역을 확인해주세요.
+                    .modal_checkMenu_exist_btn 닫기
+                .modal_checkMenu_middle
+                    .modal_checkMenu_list_main
+                        .modal_checkMenu_num_main NO
+                        .modal_checkMenu_name_main 상품명
+                        .modal_checkMenu_need_main 요청사항
+                        .modal_checkMenu_count_main 수량
+                        .modal_checkMenu_amount_main 상품금액
+                        .modal_checkMenu_total_main 주문금액
+                    .midal_checkMenu_list_wrap#modal_checkMenu_list_wrap 
+                .modal_checkMenu_bottom 
+                    .modal_checkMenu_intended_amount 총 주문 금액
+                    .modal_checkMenu_total_amount#modal_checkMenu_total_amount 0
+                    .modal_checkMenu_krw 원
+                    #modal_selectMenu_add_btn 결제하기
+            //- 결제 전 주문 확인페이지 끝
+
+            //- 주문내역 확인 창 시작
+            .modal_orderHistory
+                .modal_orderHistory_top
+                    .modal_orderHistory_text 주문 내역
+                    .modal_orderHistory_exist_btn 닫기
+                .modal_orderHistory_middle
+                    .modal_orderHistory_list_main
+                        .modal_orderHistory_time_main NO
+                        .modal_orderHistory_name_main 상품명
+                        .modal_orderHistory_need_main 요청사항
+                        .modal_orderHistory_count_main 수량
+                        .modal_orderHistory_amount_main 상품금액
+                        .modal_orderHistory_total_main 주문금액
+                    .modal_orderHistory_wrap#modal_orderHistory_wrap 
+                .modal_orderHistory_bottom 
+                    .modal_orderHistory_intended_amount 총 주문 금액
+                    .modal_orderHistory_total_amount#modal_orderHistory_total_amount 0
+                    .modal_orderHistory_krw 원
+            //- 주문내역 확인 창 끝
+
+            //- 멤버십 모달창 시작
+            #modal_membership.modal_membership
+                i.xi-angle-left.modal_membership_icon
+                .modal_membership_printArea
+                    .modal_membership_printDesc
+                        p 상무초밥 멤버십
+                        p 적립하실 휴대폰 번호를 입력해 주세요.
+                        .modal_membership_pointPrintArea
+                            span#membershipPoint 0
+                            span p 적립됩니다.
+                        .modal_membership_pointPrintInfoBox
+                            i.xi-emoticon-smiley-o.modal_membership_pointPrintInfoIcon
+                            span 적립금액은 결제금액의 1%입니다.
+                    .modal_membership_logo_img
+                .modal_membership_enterArea
+                    //- .modal_membership_printTel
+                    input#modal_membership_printTel.modal_membership_printTel(maxlength="11", readonly name="telNum" value="")
+                    .modal_membership_enterTel 
+                        .modal_membership_enter_line
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 1
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 2
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 3
+                        .modal_membership_enter_line
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 4
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 5
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 6
+                        .modal_membership_enter_line
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 7
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 8
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 9
+                        .modal_membership_enter_line
+                            .modal_membership_enter_btn.modal_membership_enter_reset_btn 초기화
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 0
+                            .modal_membership_enter_btn.modal_membership_enter_delete_btn
+                                i.xi-backspace.modal_membership_backspaceIcon
+                    .modal_membership_control_btn_box
+                        #modal_membership_control_btn_pass.modal_membership_control_btn 건너뛰기
+                        button(id="modal_membership_control_btn_enterFinish" class="modal_membership_control_btn") 입력완료
+            //- 멤버십 모달창 끝
+
+            //- 결제 모달창 시작
+            //- 카드삽입
+            .modal_payment_cardPlease_box
+                .modal_payment_cardPlease
+                    .modal_payment_cardPlease_desc
+                        p 신용카드 결제
+                        p 신용카드를 투입구에 넣어주세요.
+                        p 결제가 완료될 때까지 카드를 빼지 마세요!
+                    .modal_payment_cardPlease_animation
+                        .modal_payment_cardPlease_cardInput1
+                            .modal_payment_cardPlease_cardInput2
+                        .modal_payment_cardPlease_card0
+                            .modal_payment_cardPlease_card1
+                                .modal_payment_cardPlease_card2
+                                    .modal_payment_cardPlease_card3
+                                        .modal_payment_cardPlease_card4
+                    .modal_payment_cardPlease_btn 결제 취소
+            //-결제 중
+            .modal_payment_process_box
+                .modal_payment_process
+                    .modal_payment_process_img
+                    .modal_payment_process_desc
+                        p 결제가 진행 중입니다.
+                        p 잠시만 기다려주세요.
+            //-결제끝
+            .modal_payment_clear_box
+                .modal_payment_clear
+                    .modal_payment_clear_img
+                        .modal_payment_clear_img_circle ✔
+                            .modal_payment_clear_img_anime
+                    .modal_payment_clear_desc
+                        p 결제가 완료되었습니다.
+                        p <span></span>초 후에 창이 닫힙니다.
+                    .modal_payment_clear_btn 확인
+            //- 결제 모달창 끝
+
+
+            //- 모달의 모달 시작
+            .modalOfModal_alert
+                .modalOfModal_modal
+
+            .modalOfModal_alert_new
+            .modalOfModal_alert_member
+            //- 모달의 모달 끝
+
+
+            //- 시작페이지 (동영상)
+            .modal_intro_video_area
+                .modal_intro_logo_box
+                    img(class="modal_intro_logo_img" src="./images/logo.png")
+                .modal_intro_video_box
+                    video(class="modal_intro_video" src="./images/introVideo.mp4" autoplay loop muted width="857")
+                .modal_intro_pleaseTouchScreen_box
+                    .modal_intro_pleaseTouchScreen 화면을 터치해주세요
+
+            //- 멤버십 회원가입
+            .modal_join_memberShip_ask
+                .modal_join_memberShip_box
+                    p.modal_join_memberShip_text_01 존재하지 않는 회원번호입니다.
+                    p.modal_join_memberShip_text_02 입력하신 번호로 회원가입을 진행할까요?
+                .modal_join_memberShip_phoneNumber
+                .modal_join_memberShip_btn_box
+                    .modal_join_memberShip_btn_no 아니오
+                    .modal_join_memberShip_btn_yes 예
+
+        input#phoneNumberLast(type="hidden" value="")
+        input#orderListLast(type="hidden" value="")
+        input#orderPriceLast(type="hidden" value="")
+        input#orderUsePointLast(type="hidden" value="")
+        script.
+            let phoneNumberFlag = false;
+            let checkAjax = false;
+            class SangmooOrderSystem{
+                constructor(tableMenuName, tableMenuPrice, menuInfo, imgSrc, category){
+                    this.menuName = tableMenuName;
+                    this.menuPrice = tableMenuPrice;
+                    this.menuInfo = menuInfo;
+                    this.imgSrc = imgSrc;
+                    this.category = category;
+                    this.menuCount = 0;
+                    this.cuOutCount = 0;
+                    this.waOutCount = 0;
+                    this.cuwaOutCount = 0;
+                }
+                get getThisName(){
+                    return this.menuName;
+                }
+                get getThisPrice(){
+                    return this.menuPrice;
+                }
+                get getThisInfo(){
+                    return this.menuInfo;
+                }
+                get getThisImgSrc(){
+                    return this.imgSrc;
+                }
+                get getThisCategory(){
+                    return this.category;
+                }
+                plusCount(){
+                    this.menuCount++;
+                }
+                minusCount () {
+                    this.menuCount--;
+                }
+                set setThisCount( count ){
+                    this.menuCount = count;
+                }
+                get getThisCount(){
+                    return this.menuCount;
+                }
+                // 오이 시러
+                plusCuOutCount() {
+                    this.cuOutCount++;
+                }
+                set setThisCuOutCount(count) {
+                    this.cuOutCount = count;
+                }
+                get getThisCuOutCount() {
+                    return this.cuOutCount;
+                }
+                // 와사비 시러
+                plusWaOutCount() {
+                    this.waOutCount++;
+                }
+                set setThisWaOutCount(count) {
+                    this.waOutCount = count;
+                }
+                get getThisWaOutCount() {
+                    return this.waOutCount;
+                }
+                // 둘 다 시러
+                plusCuwaOutCount() {
+                    this.cuwaOutCount++;
+                }
+                set setThisCuwaOutCount(count) {
+                    this.cuwaOutCount = count;
+                }
+                get getThisCuwaOutCount() {
+                    return this.cuwaOutCount;
+                }
+            }
+            class SangmooCartTable {
+                constructor(cartMenu, cartPrice, cartCount, cartuOutCount, cartwaOutCount, cartcuwaOutCount){
+                    this.cartMenu = cartMenu;
+                    this.cartPrice = cartPrice;
+                    this.cartCount = cartCount;
+                    this.cartuOutCount = cartuOutCount;
+                    this.cartwaOutCount = cartwaOutCount;
+                    this.cartcuwaOutCount = cartcuwaOutCount;
+                }
+                get getThisName(){
+                    return this.cartMenu;
+                }
+                get getThisPrice(){
+                    return this.cartPrice;
+                }
+                get getThisCount(){
+                    return this.cartCount;
+                }
+                get getThisCuOutCount(){
+                    return this.cartuOutCount;
+                }
+                get getThisWaOutCount(){
+                    return this.cartwaOutCount;
+                }
+                get getThisCuwaOutCount(){
+                    return this.cartcuwaOutCount;
+                }
+            }
+            //- 직원호출 클래스
+            class StaffCallSystem {
+                constructor(reqService, serviceCategory) {
+                    this.reqService = reqService;
+                    this.serviceCategory = serviceCategory;
+                    this.reqCount = 0;
+                }
+                get getThisServiceName() {
+                    return this.reqService;
+                }
+                get getThisServiceCategory() {
+                    return this.serviceCategory;
+                }
+                get getThisServiceCount() {
+                    return this.reqCount;
+                }
+                plusStaffCallCount() {
+                    this.reqCount++;
+                }
+                minusStaffCallCount() {
+                    this.reqCount--;
+                }
+                set setThisServiceCount( count ) {
+                    this.reqCount = count;
+                }
+            }
+
+            function scrollToSection(event) {
+                event.preventDefault(); // 기본 동작인 URL 이동을 막음
+                let target = event.target.getAttribute("href"); // 링크의 href 값을 가져옴
+                let element = document.querySelector(target); // 링크의 href 값을 사용하여 요소를 선택함
+                element.scrollIntoView(); // 선택한 요소로 스크롤 이동
+            }
+            let tableImgSrc = '#{imgSrc}'.split(/,/g);
+            let tableMenuName = `#{menuName}`.split(/,/g);
+            let tableMenuPrice = '#{menuPrice}'.split(/,/g);
+            let tableCategory = '#{menuCategory}'.split(/,/g);
+            let refillStuff = '#{refillStuff}'.split(/,/g);
+            let refillKind = '#{refillKind}'.split(/,/g);
+            let menuInfo = '#{menuInfo}'.split(/,/g);
+            let memberId = '#{memberId}'.split(/,/g);
+            let memberTel = '#{memberTel}'.split(/,/g);
+            let memberPoint = '#{memberPoint}'.split(/,/g);
+            let totalPrice = 0;
+            let mainMenu = [];
+            let cartOrderMenu = [];
+            let junCount = 0;
+            let addPoint = 0;
+            let orderMenuGetName = [];
+            let orderMenuPassName = [];
+            let orderHistoryTotalPrice = 0;
+            let printMenuBook = "";
+            let printCartBox = "";
+            let staffCallObj = [];
+            let staffCallRepeatArea = "";
+            let serviceListOfLength = 0;
+
+            for(let i=0; i<tableMenuName.length; i++){
+                mainMenu[i] = new SangmooOrderSystem( tableMenuName[i], tableMenuPrice[i], menuInfo[i], tableImgSrc[i], tableCategory[i]);
+            }
+            let modalOff = () => {
+                $("#modal_selectMenu").css("display", "none");
+                $(".modalOfModal_alert_new").css("display", "none");
+            }
+            //직원호출 객체 생성
+            for(let i=0; i<refillStuff.length; i++) {
+                if(refillStuff[i] != "") {
+                    staffCallObj[i] = new StaffCallSystem(refillStuff[i], refillKind[i]);
+                }
+            }
+            // 직원호출 옵션 뿌리기
+            for(let i=0; i<staffCallObj.length; i++) {
+                staffCallRepeatArea = `
+                <div id="modal_staffCall_serviceList${i}" class="modal_staffCall_serviceList">${staffCallObj[i].getThisServiceName}</div>
+                `;
+                if(staffCallObj[i].getThisServiceCategory == 'stuff') {
+                    $(`#modal_staffCall_serviceList_stuff`).html($(`#modal_staffCall_serviceList_stuff`).html() + staffCallRepeatArea);
+                } else if(staffCallObj[i].getThisServiceCategory == 'refill') {
+                    $(`#modal_staffCall_serviceList_refill`).html($(`#modal_staffCall_serviceList_refill`).html() + staffCallRepeatArea);
+                } else if(staffCallObj[i].getThisServiceCategory == 'etc') {
+                    $(`#modal_staffCall_serviceList_etc`).html($(`#modal_staffCall_serviceList_etc`).html() + staffCallRepeatArea);
+                }
+                if(staffCallObj[i].getThisServiceName.length > 5) {
+                    $(`#modal_staffCall_serviceList${i}`).addClass("lineOther");
+                }
+            }
+            // 직원호출 옵션 선택했을 때 div 생성하는 함수
+            let tempStaffCall;
+            let makeStaffCall = (staffCallName) => {
+                tempStaffCall = `
+                    <div id="modal_staffCall_choiceCall_box${staffCallName}" class="modal_staffCall_choiceCall_box">
+                        <div id="modal_staffCall_choiceContent_box${staffCallName}" class="modal_staffCall_choiceContent_box"></div>
+                        <div class="modal_staffCall_choiceAmount_box">
+                            <div class="modal_staffCall_choiceAmount_btnBox">
+                                <button class="modal_staffCall_minus_btn">-</button>
+                                <input class="modal_staffCall_choiceAmount" type="text" value="" readonly />
+                                <button class="modal_staffCall_plus_btn">+</button>
+                            </div>
+                            <div class="modal_staffCall_choiceDelete_btn">삭제</div>
+                        </div>
+                    </div>`;
+                $(`.modal_staffCall_guideWord`).hide();
+                $(`.modal_staffCall_showChoice_box`).css("flex-flow", "column nowrap").css("justify-content", "flex-start");
+                $(`.modal_staffCall_guideWord`).after(tempStaffCall);
+            }
+
+            // input hidden 으로 주문내역 값 테이블로 전달 후 테이블에 INSERT
+            let insertInputVal = (phoneNum, orderList, orderPrice, orderPoint) => {
+                $("#phoneNumberLast").val(phoneNum);
+                $("#orderListLast").val(orderList);
+                $("#orderPriceLast").val(orderPrice);
+                $("#orderUsePointLast").val(orderPoint);
+                $.ajax({
+                    url: "adminTable",
+                    data: {adminPhoneNum: phoneNum, adminOrderList: orderList, adminOrderPrice: orderPrice, adminOrderPoint: orderPoint},
+                    method: "POST",
+                    dataType: "json",
+                }).done((json) => {
+                    console.log("send adminTable");
+                });
+            }
+
+            // 직원호출 옵션 선택
+            let checkNameValue;
+            $(`.modal_staffCall_serviceList`).off("click").on("click", (e) => {
+                checkNameValue = (e.target.id).substr(27);
+                if(staffCallObj[checkNameValue].getThisServiceCount < 20) {
+                    staffCallObj[checkNameValue].plusStaffCallCount();
+                    if(staffCallObj[checkNameValue].getThisServiceName == $(`#modal_staffCall_choiceContent_box${checkNameValue}`).text()) {
+                    } else {
+                        makeStaffCall(checkNameValue);
+                    }
+                    $(`#modal_staffCall_choiceCall_box${checkNameValue} .modal_staffCall_choiceContent_box`).text(staffCallObj[checkNameValue].getThisServiceName);
+                    $(`#modal_staffCall_choiceCall_box${checkNameValue} .modal_staffCall_choiceAmount`).val(staffCallObj[checkNameValue].getThisServiceCount);
+                    // 플러스 버튼
+                    let checkCountValue;
+                    $(`.modal_staffCall_plus_btn`).off("click").on("click", function() {
+                        checkCountValue = ($(this).parents(`.modal_staffCall_choiceCall_box`).attr(`id`)).substr(30);
+                        if(staffCallObj[checkCountValue].getThisServiceCount < 20) {
+                            staffCallObj[checkCountValue].plusStaffCallCount();
+                            $(this).prev().val(staffCallObj[checkCountValue].getThisServiceCount);
+                        }
+                    })
+                    // 마이너스 버튼
+                    $(`.modal_staffCall_minus_btn`).off("click").on("click", function() {
+                        checkCountValue = ($(this).parents(`.modal_staffCall_choiceCall_box`).attr(`id`)).substr(30);
+                        if(staffCallObj[checkCountValue].getThisServiceCount > 1) {
+                            staffCallObj[checkCountValue].minusStaffCallCount();
+                            $(this).next().val(staffCallObj[checkCountValue].getThisServiceCount);
+                        }
+                    })
+                    // 개별삭제
+                    $('.modal_staffCall_choiceDelete_btn').off("click").on("click", function () {
+                        $(this).parents(`.modal_staffCall_choiceCall_box`).remove();
+                        checkCountValue = ($(this).parents(`.modal_staffCall_choiceCall_box`).attr(`id`)).substr(30);
+                        staffCallObj[checkCountValue].setThisServiceCount = 0;
+                        // 마지막 삭제일 때는 안내문구가 다시 나오도록
+                        if (!$(`.modal_staffCall_guideWord`).next().is(`div`)) {
+                            $(`.modal_staffCall_showChoice_box`).css("justify-content", "center");
+                            $(`.modal_staffCall_guideWord`).show();
+                        }
+                    });
+                }
+            });
+            
+            // 직원호출 전체삭제
+            $(`.modal_staffCall_choiceControl_btn`).click(function () {
+                $(`.modal_staffCall_choiceCall_box`).remove();
+                $(`.modal_staffCall_showChoice_box`).css("justify-content", "center");
+                $(`.modal_staffCall_guideWord`).show();
+                for(i=0; i<staffCallObj.length; i++) {
+                    staffCallObj[i].setThisServiceCount = 0;
+                }
+            })
+            //콤마 찍어주는 함수
+            function numberComma(convertNum) {
+                return convertNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+            // 장바구니창 출력
+            let makeBasket = (checkIndex) => {
+                if(checkIndex == undefined){
+                    return false;
+                } else {
+                printCartBox = `
+                    <section id="displayWrap${checkIndex}" class="main_cart_list_box">
+                        <div class="main_cart_list_topBox">
+                            <div class="main_cart_list_nameRequireBox">
+                                <div id="displayMenu${checkIndex}" class="main_cart_list_nameBox"></div>
+                                <div id="main_cart_list_requireBox${checkIndex}" class="main_cart_list_requireBox">
+                                </div>
+                            </div>
+                                <div class="main_cart_list_deleteBtnBox">
+                                    <button id="deleteBtn${checkIndex}" class="main_cart_list_deleteBtn" name="${checkIndex}">삭제</button>
+                                </div>
+                        </div>
+                        <div class="main_cart_list_buttomBox">
+                            <div id="calArea${checkIndex}" class="main_cart_list_incDecBox">
+                                <button id="minusBtn${checkIndex}" class="main_cart_list_decBtn" name="${checkIndex}">-</button>
+                                <div id="displayCount${checkIndex}" class="main_cart_list_number"></div>
+                                <button id="plusBtn${checkIndex}" class="main_cart_list_incBtn" name="${checkIndex}">+</button>
+                            </div>
+                                <div class="main_cart_list_amountBox">
+                                    <div id="displayPrice${checkIndex}" class="main_cart_list_amount_price">0</div>
+                                </div>
+                        </div>
+                    </section>
+                `;
+                $("#main_cart_list_area").prepend((printCartBox));
+                }
+            }
+            // 카테고리별 메뉴판 출력
+            for(let i=0; i<mainMenu.length; i++){
+                printMenuBook = `
+                    <article id="menuWrap" class="main_menulist_box">
+                        <img id="menuImg${i}" class="main_menulist_img" src="./images/${mainMenu[i].getThisImgSrc}" name="${i}" alt="pic">
+                        <div id="menuName${i}" class="main_menulist_name">${mainMenu[i].getThisName}</div>
+                        <div class="main_menulist_price_box">
+                            <div id="menuPrice${i}" class="main_menulist_price">${numberComma(mainMenu[i].getThisPrice)}원</div>
+                        </div>
+                        <button class="emptyBox" name="${i}"></button>
+                    </article>
+                `;
+                if(mainMenu[i].getThisCategory == 'lunchSpecial'){
+                    $("#displayLunchSpecial").html($("#displayLunchSpecial").html() + printMenuBook);
+                } else if (mainMenu[i].getThisCategory == 'mainMenu'){
+                    $("#displayMainMenu").html($("#displayMainMenu").html() + printMenuBook);
+                } else if (mainMenu[i].getThisCategory == 'sushiSet'){
+                    $("#displaySetMenu").html($("#displaySetMenu").html() + printMenuBook);
+                } else if (mainMenu[i].getThisCategory == 'singleMenu'){
+                    $("#displaySingleMenu").html($("#displaySingleMenu").html() + printMenuBook);
+                } else if (mainMenu[i].getThisCategory == 'sasimi'){
+                    $("#displaySasimi").html($("#displaySasimi").html() + printMenuBook);
+                } else if (mainMenu[i].getThisCategory == 'sideMenu'){
+                    $("#displaySideMenu").html($("#displaySideMenu").html() + printMenuBook);
+                } else if (mainMenu[i].getThisCategory == 'drinkMenu'){
+                    $("#displayDrinkMenu").html($("#displayDrinkMenu").html() + printMenuBook);
+                }
+            }
+            // totalPrice 계산
+            let calTotalPrice = () => {
+                totalPrice = 0;
+                for(let i=0; i<mainMenu.length; i++){
+                    totalPrice += mainMenu[i].getThisPrice * mainMenu[i].getThisCount;
+                }
+                return totalPrice;
+            }
+            // 메뉴판 누르면 장바구니창 출력해서 계산
+            $("article#menuWrap").off("click").on("click", e => {
+                $(`.modal_selectMenu_option_check_all`).text("");
+                let checkIndex = e.target.name;
+                if( checkIndex > 31 ) {
+                    $('.modal_selectMenu_option_box').css("visibility","hidden");
+                } else {
+                    $('.modal_selectMenu_option_box').css("visibility","visible");
+                }
+
+                if(checkIndex == undefined || mainMenu[checkIndex].getThisCount > 20){
+                    console.log('false');
+                    return false;
+                } else {
+                    let modalImg = `
+                        <img id="modal_selectMenu_description_img${checkIndex}" class="modal_selectMenu_description_img" src="./images/${mainMenu[checkIndex].getThisImgSrc}" alt="logoImg">
+                    `;
+                    $("#insertImg").html(modalImg);
+                    $("#modal_selectMenu_name").html(mainMenu[checkIndex].getThisName);
+                    $("#modal_selectMenu_structure").html(mainMenu[checkIndex].getThisInfo);
+                    $("#modal_selectMenu_price").html(numberComma(mainMenu[checkIndex].getThisPrice));
+
+                    //장바구니 담기 버튼 누르면
+                    $("#modal_selectMenu_cart_add_btn").off("click").on("click", () => {
+                        let require_wasabi = $('#modal_selectMenu_option_check_01').text() == '✔' ? true : false;
+                        let require_cucumber = $('#modal_selectMenu_option_check_02').text() == '✔' ? true : false;
+                        
+                        for(let i=0; i<mainMenu.length; i++){
+                            if(mainMenu[checkIndex].getThisCount >= 20){
+                                console.log('count false');
+                                modalOff();
+                                return false;
+                            } else if (mainMenu[checkIndex].getThisName == $("#displayMenu"+checkIndex).html()){
+                                // 와사비, 오이 옵션 체크 시작
+                                if($('#modal_selectMenu_option_check_01').text() == '✔' &&  $('#modal_selectMenu_option_check_02').text() == '✔') {
+                                    mainMenu[checkIndex].plusCuwaOutCount();
+                                } else if($('#modal_selectMenu_option_check_01').text() == '✔') {
+                                    mainMenu[checkIndex].plusWaOutCount();
+                                } else if($('#modal_selectMenu_option_check_02').text() == '✔') {
+                                    mainMenu[checkIndex].plusCuOutCount();
+                                }
+                                
+                                // 요청사항 있으면 장바구니에 요청사항o 뜨게
+                                if(!(mainMenu[checkIndex].getThisCuOutCount + mainMenu[checkIndex].getThisWaOutCount + mainMenu[checkIndex].getThisCuwaOutCount) == 0) {
+                                    $(`#main_cart_list_requireBox${checkIndex}`).text("요청사항 o");
+                                }
+
+                                mainMenu[checkIndex].plusCount();
+                                $("#displayCount"+checkIndex).html(mainMenu[checkIndex].getThisCount);
+                                $("#displayPrice"+checkIndex).html(numberComma(Number(mainMenu[checkIndex].getThisPrice) * (mainMenu[checkIndex].getThisCount)));
+                                calTotalPrice();
+                                $("#main_cart_total_price").html(numberComma(totalPrice) + '원');
+                                modalOff();
+                                return false;
+                            }
+                        }
+
+                        if($('#modal_selectMenu_option_check_01').text() == '✔' &&  $('#modal_selectMenu_option_check_02').text() == '✔') {
+                            mainMenu[checkIndex].plusCuwaOutCount();
+                        } else if($('#modal_selectMenu_option_check_01').text() == '✔') {
+                            mainMenu[checkIndex].plusWaOutCount();
+                        } else if($('#modal_selectMenu_option_check_02').text() == '✔') {
+                            mainMenu[checkIndex].plusCuOutCount();
+                        }
+
+                        makeBasket(checkIndex);
+                        mainMenu[checkIndex].plusCount();
+
+                        // 요청사항 있으면 장바구니에 요청사항o 뜨게
+                        if(!(mainMenu[checkIndex].getThisCuOutCount + mainMenu[checkIndex].getThisWaOutCount + mainMenu[checkIndex].getThisCuwaOutCount) == 0) {
+                            $(`#main_cart_list_requireBox${checkIndex}`).text("요청사항 o");
+                        }
+
+                        calTotalPrice();
+                        $("#displayMenu"+checkIndex).html(mainMenu[checkIndex].getThisName);
+                        $("#displayCount"+checkIndex).html(mainMenu[checkIndex].getThisCount);
+                        $("#displayPrice"+checkIndex).html(numberComma(mainMenu[checkIndex].getThisPrice * mainMenu[checkIndex].getThisCount) + '원');
+                        $("#main_cart_total_price").text(numberComma(totalPrice) + '원');
+                        modalOff();
+                        let cartWidth = $( '.main_cart_area' ).width();
+                        if( cartWidth == 0 ) {
+                            $('.main_cart_area').css('width', '24rem');
+                            $('.main_cart_area').css('opacity', '1');
+                            $(`.main_menulist_area`).css("width", "43rem")
+                            $('.main_cart_list_area').css('width', '23.5rem');
+                            $(`.main_body_area`).css("width", "61rem")
+                            $(`#main_menulist_wrap_area`).css("width", "43rem")
+                        }
+                    });
+
+                    // 장바구니 메뉴 plus 버튼
+                    $(document).off("click", "#plusBtn"+checkIndex).on("click", "#plusBtn"+checkIndex, e => {
+                        let plusIndex = e.target.name;
+                        if(mainMenu[plusIndex].getThisCount == 20){
+                            console.log('stop');
+                            return false;
+                        } else {
+                            mainMenu[plusIndex].plusCount();
+                            $("#displayPrice"+plusIndex).html(numberComma(mainMenu[plusIndex].getThisCount * mainMenu[plusIndex].getThisPrice) + '원');
+                            $("#displayCount"+plusIndex).html(mainMenu[plusIndex].getThisCount);
+                            calTotalPrice();
+                            $("#main_cart_total_price").html(numberComma(totalPrice) + '원');
+                        }
+                    });
+                    // 장바구니 메뉴 minus 버튼
+                    $(document).off("click", "#minusBtn"+checkIndex).on("click", "#minusBtn"+checkIndex, e => {
+                        let minusIndex = e.target.name;
+                        if(mainMenu[minusIndex].getThisCount === 1){
+                            mainMenu[minusIndex].menuCount = 1;
+                            $("#displayPrice"+minusIndex).html(numberComma(mainMenu[minusIndex].getThisPrice) + '원');
+                        } else {
+                            mainMenu[minusIndex].minusCount();
+                            $("#displayCount"+minusIndex).html(mainMenu[minusIndex].getThisCount);
+                            $("#displayPrice"+minusIndex).html(numberComma(mainMenu[minusIndex].getThisPrice * mainMenu[minusIndex].getThisCount) + '원');
+                            calTotalPrice();
+                            $("#main_cart_total_price").html(numberComma(totalPrice) + '원');
+                            mainMenu[minusIndex].setThisCuOutCount = 0;
+                            mainMenu[minusIndex].setThisWaOutCount = 0;
+                            mainMenu[minusIndex].setThisCuwaOutCount = 0;
+
+                            if($("#main_cart_list_requireBox"+minusIndex).text() !== "" ) {
+                                $(`#main_cart_list_requireBox${minusIndex}`).text("요청사항 초기화");
+                            }
+                        }
+                    });
+                    // 장바구니 주문하기 버튼
+                    $("#main_cart_order_btn").off("click").on("click", () => {
+                        // 자식 태그가 있는지 검사
+                        if($("#main_cart_list_area").children().is("section")){
+                            for(let i=0; i<mainMenu.length; i++){
+                                $("#modal_checkMenu_list"+i).remove();
+                            }
+                            $("#modal_checkMenu_list_wrap").html('');
+                            $(".modalOfModal_alert_new").css("display","flex");
+                            $("#modal_checkMenu").css("display", "flex");
+                            let modalPrintNumber = 1;
+                            for(let i=0; i<mainMenu.length; i++){
+                                if(mainMenu[i].getThisCount > 0){
+                                    let cucumber_text = mainMenu[i].getThisCuOutCount > 0 ? `오이x ${mainMenu[i].getThisCuOutCount}개&nbsp` : "";
+                                    let wasabi_text = mainMenu[i].getThisWaOutCount > 0 ? `와사비x ${mainMenu[i].getThisWaOutCount}개&nbsp` : "";
+                                    let cucumber_wasabi_text = mainMenu[i].getThisCuwaOutCount > 0 ? `오이,와사비x ${mainMenu[i].getThisCuwaOutCount}개&nbsp` : "";
+
+                                    let modalMenuList = `
+                                        <div id="modal_checkMenu_list${i}" class="modal_checkMenu_list_01">
+                                            <div class="modal_checkMenu_num_01">${modalPrintNumber}</div>
+                                            <div id="modal_checkMenu_name${i}" class="modal_checkMenu_name_01">${mainMenu[i].getThisName}</div>
+                                            <div id="modal_checkMenu_need${i}" class="modal_checkMenu_need_01">
+                                                <span>${cucumber_text}${wasabi_text}</span>
+                                                <span>${cucumber_wasabi_text}</span>
+                                            </div>
+                                            <div id="modal_checkMenu_count${i}" class="modal_checkMenu_count_01">${mainMenu[i].getThisCount}개</div>
+                                            <div id="modal_checkMenu_amount${i}" class="modal_checkMenu_amount_01">${numberComma(mainMenu[i].getThisPrice)}원</div>
+                                            <div id="modal_checkMenu_total${i}" class="modal_checkMenu_total_01">${numberComma(mainMenu[i].getThisPrice * mainMenu[i].getThisCount)}원</div>
+                                        </div>
+                                    `;
+                                    $("#modal_checkMenu_list_wrap").html($("#modal_checkMenu_list_wrap").html() + modalMenuList);
+                                    $("#modal_checkMenu_total_amount").html(numberComma(totalPrice));
+                                    modalPrintNumber++;
+                                }
+                            }
+                            addPoint = Math.floor(totalPrice * 0.01);
+                            $("#membershipPoint").html(numberComma(addPoint));
+                        } else {
+                            console.log('cart empty');
+                            return false;
+                        }
+                    });
+                    // 장바구니 메뉴 삭제 버튼
+                    $(document).off("click", "#deleteBtn").on("click", "#deleteBtn"+checkIndex, e => {
+                        let deleteIndex = e.target.name;
+                        $("#displayWrap"+deleteIndex).remove();
+                        mainMenu[deleteIndex].setThisCount = 0;
+                        mainMenu[deleteIndex].setThisCuOutCount = 0;
+                        mainMenu[deleteIndex].setThisWaOutCount = 0;
+                        mainMenu[deleteIndex].setThisCuwaOutCount = 0;
+                        calTotalPrice();
+                        $("#main_cart_total_price").html(numberComma(totalPrice) + '원');
+                    });
+                    // 결제하기 버튼
+                    $("#modal_selectMenu_add_btn").off("click").on("click", () => {
+                        $("#modal_checkMenu").css("display", "none");
+                        $("#modal_membership").css("display", "flex");
+                    });
+                    // 결제창 건너뛰기 버튼
+                    $('#modal_membership_control_btn_pass').off("click").on("click", function () {
+                        $(".modal_payment_cardPlease_box").css("display", "flex");
+                        let matchFlag = true;
+                        $(".modal_payment_cardPlease_btn").on("click", function () {
+                            $(".modal_payment_cardPlease_box").css("display", "none");
+                            $("#modal_membership_printTel").val("");
+                            membershipPrintValue = "";
+                            matchFlag = false;
+                            checkAjax = true;
+                        });
+                        //3초후에 카드삽입창 닫힘
+                        setTimeout(() => {
+                            if (matchFlag) {
+                                $(`.modal_payment_cardPlease_box`).css("display", "none");
+                                $(`.modal_payment_process_box`).css("display", "flex");
+                                //결제완료창 - 5초 후에 창이 닫힙니다. 문구(숫자 감소)
+                                let j = 6;
+                                let paymentTimeOut = setInterval(() => {
+                                    $(`.modal_payment_clear_desc p:last-child span`).text(`${j}`);
+                                    j--;
+                                }, 1000);
+                                //2초후에 결제중 창 닫힘,
+                                setTimeout(() => {
+                                    $(`.modal_payment_process_box`).css("display", "none");
+                                    $(`.modal_payment_clear_box`).css("display", "flex");
+                                    //5초 후에 완료창 닫히면서 메인화면으로 이동
+                                    setTimeout(() => {
+                                        $('.modalOfModal_alert_new').css("display","none");
+                                        $(`.modal_payment_clear_box`).css("display", "none");
+                                        $(".modal_membership").css("display", "none");
+                                        clearInterval(paymentTimeOut);
+                                    }, 4800);
+                                }, 2000);
+                                for(let i=0; i<mainMenu.length; i++){
+                                    $("#modal_orderHistory_list").remove();
+                                }
+
+                                // 주문내역 내용 삽입 및 합계금액 새로 계산해서 출력
+                                for(let i=0; i<mainMenu.length; i++){
+                                    if(mainMenu[i].getThisCount > 0){
+                                        cartOrderMenu[junCount] = new SangmooCartTable(mainMenu[i].getThisName, mainMenu[i].getThisPrice, mainMenu[i].getThisCount, mainMenu[i].getThisCuOutCount, mainMenu[i].getThisWaOutCount, mainMenu[i].getThisCuwaOutCount);
+                                        orderMenuPassName.push(mainMenu[i].getThisName);
+                                        junCount++;
+                                    }
+                                }
+                                for(let i=0; i<cartOrderMenu.length; i++){
+                                    let cucumber_text = cartOrderMenu[i].getThisCuOutCount > 0 ? `오이x ${cartOrderMenu[i].getThisCuOutCount}개&nbsp` : "";
+                                    let wasabi_text = cartOrderMenu[i].getThisWaOutCount > 0 ? `와사비x ${cartOrderMenu[i].getThisWaOutCount}개&nbsp` : "";
+                                    let cucumber_wasabi_text = cartOrderMenu[i].getThisCuwaOutCount > 0 ? `오이,와사비x ${cartOrderMenu[i].getThisCuwaOutCount}개&nbsp` : "";
+
+                                    let modalOrderHistory = `
+                                        <div id="modal_orderHistory_list" class="modal_orderHistory_list_01">
+                                            <div class="modal_orderHistory_time_01">${i+1}</div>
+                                            <div class="modal_orderHistory_name_01">${cartOrderMenu[i].getThisName}</div>
+                                            <div class="modal_orderHistory_need_01">
+                                                <span>${cucumber_text}${wasabi_text}</span>
+                                                <span>${cucumber_wasabi_text}</span>
+                                            </div>
+                                            <div class="modal_orderHistory_count_01">${cartOrderMenu[i].getThisCount}개</div>
+                                            <div class="modal_orderHistory_amount_01">${numberComma(cartOrderMenu[i].getThisPrice)}원</div>
+                                            <div class="modal_orderHistory_total_01">${numberComma(cartOrderMenu[i].getThisPrice * cartOrderMenu[i].getThisCount)}원</div>
+                                        </div>
+                                    `;
+                                    orderHistoryTotalPrice += cartOrderMenu[i].getThisCount * cartOrderMenu[i].getThisPrice;
+                                    $("#modal_orderHistory_wrap").html($("#modal_orderHistory_wrap").html() + modalOrderHistory);
+                                }
+                                $("#modal_orderHistory_total_amount").html(numberComma(orderHistoryTotalPrice));
+                                for(let i=0; i<mainMenu.length; i++){
+                                    $("#displayWrap"+i).remove();
+                                    $("#modal_checkMenu_list"+i).remove();
+                                    mainMenu[i].setThisCount = 0;
+                                    mainMenu[i].setThisCuOutCount = 0;
+                                    mainMenu[i].setThisWaOutCount = 0;
+                                    mainMenu[i].setThisCuwaOutCount = 0;
+                                }
+                                orderHistoryTotalPrice = 0;
+                                $("#main_cart_total_price").html('0원');
+                                $("#modal_checkMenu").css("display", "none");
+                                $("#modal_checkMenu_total_amount").html('0');
+                                insertInputVal(null, orderMenuPassName, totalPrice, addPoint);
+                            }
+                        }, 3000);
+                    });
+                }
+            });
+            /* 멤버십창 관련 js */
+            /* 멤버십 입력 모달창 jquery 시작 */
+            let membershipPrintValue = "";
+            $(`.modal_membership_enter_num_btn`).on("click", function () {
+                membershipPrintValue += $(this).text();
+                if (membershipPrintValue.length > 11) {
+                    membershipPrintValue = membershipPrintValue.slice(0, membershipPrintValue.length - 1);
+                }
+                $(`.modal_membership_printTel`).val(membershipPrintValue);
+            });
+            $(`.modal_membership_enter_reset_btn`).on("click", function () {
+                $(`.modal_membership_printTel`).val("");
+                membershipPrintValue = "";
+            });
+            $(`.modal_membership_enter_delete_btn`).on("click", function () {
+                membershipPrintValue = membershipPrintValue.slice(0, membershipPrintValue.length - 1);
+                $(`.modal_membership_printTel`).val(membershipPrintValue);
+            });
+
+            let modalOfModalText = needAlertText => {
+                switch (needAlertText) {
+                    case "menuPutInCartConfirm": return "<p>주문이 장바구니에 담겼습니다.</p>";
+                    case "mininumAlert": return "<p>최소 수량은 1개입니다.</p>";
+                    case "maximumAlert": return "<p>최대 수량은 20개입니다.</p>";
+                    case "membershipConfirm": return "<p>멤버십이 확인되었습니다.</p>";
+                    case "membershipConfirmFail": return "<p>존재하지 않는 회원입니다.</p><p>멤버십 신규 가입은 어플을 이용해 주세요.</p>";
+                    case "membershipNoExist": return "<p>유효하지 않은 번호입니다.</p>";
+                    case "paymentCancel": return "결제가 취소되었습니다.";
+                    case "membershipComplete": return "<p>회원가입이 완료되었습니다.</p>";
+                    case "staffCallConfirm": return "<p>요청이 완료되었습니다.</p>";
+                }
+            }
+
+            $(`#modal_membership_control_btn_enterFinish`).off("click").on("click", function () {
+                $(`.modalOfModal_modal p`).remove();
+                let phoneNumRegexr = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+                if (phoneNumRegexr.test(membershipPrintValue)) {
+                    $(`.modalOfModal_alert`).css("display", "flex");
+                    // 회원일 때
+                    console.log($(".modal_membership_printTel").val());
+                    phoneNumberFlag = false;
+                    $.ajax({
+                        url: "/member",
+                        data: {phoneNumber: $("#modal_membership_printTel").val()},
+                        method: "POST",
+                        dataType: "json",
+                    }).done((json) => {
+                        console.log(json)
+                        if (json.result?.point || json.result?.point == 0) {
+                            phoneNumberFlag = true;
+                            console.log("ajax Point")
+                            console.log("ajax",phoneNumberFlag);
+                        }
+                        if(phoneNumberFlag) {
+                            console.log("if", phoneNumberFlag);
+                            $(`.modalOfModal_modal`).append(`${modalOfModalText("membershipConfirm")}`);
+                            let matchFlag = true;
+                            $(".modal_payment_cardPlease_btn").on("click", () => {
+                                $(".modal_payment_cardPlease_box").css("display", "none");
+                                $("#modal_membership_printTel").val("");
+                                membershipPrintValue = "";
+                                matchFlag = false;
+                            });
+                            setTimeout(() => {
+                                $(".modal_payment_cardPlease_box").css("display", "flex");
+                                $(`.modalOfModal_alert`).css("display", "none");
+                                //3초후에 카드삽입창 닫힘
+                                setTimeout(() => {
+                                    if (matchFlag) {
+                                        $(`.modal_payment_cardPlease_box`).css("display", "none");
+                                        $(`.modal_payment_process_box`).css("display", "flex");
+                                        $(".modalOfModal_alert_new").css("display", "none");
+                                        //결제완료창 - 5초 후에 창이 닫힙니다. 문구(숫자 감소)
+                                        let j = 6;
+                                        let paymentTimeOut = setInterval(() => {
+                                            $(`.modal_payment_clear_desc p:last-child span`).text(`${j}`);
+                                            j--;
+                                        }, 1000);
+                                        //2초후에 결제중 창 닫힘,
+                                        setTimeout(() => {
+                                            $(`.modal_payment_process_box`).css("display", "none");
+                                            $(`.modal_payment_clear_box`).css("display", "flex");
+                                            //5초 후에 완료창 닫히면서 메인화면으로 이동
+                                            setTimeout(() => {
+                                                $(`.modal_payment_clear_box`).css("display", "none");
+                                                $(".modal_membership").css("display", "none");
+                                                clearInterval(paymentTimeOut);
+                                            }, 4800);
+                                        }, 2000);
+                                        for(let i=0; i<mainMenu.length; i++){
+                                            if(mainMenu[i].getThisCount > 0){
+                                                cartOrderMenu[junCount] = new SangmooCartTable(mainMenu[i].getThisName, mainMenu[i].getThisPrice, mainMenu[i].getThisCount, mainMenu[i].getThisCuOutCount, mainMenu[i].getThisWaOutCount, mainMenu[i].getThisCuwaOutCount);
+                                                orderMenuGetName.push(mainMenu[i].getThisName);
+                                                junCount++;
+                                            }
+                                        }
+                                        for(let i=0; i<mainMenu.length; i++){
+                                            $("#modal_orderHistory_list").remove();
+                                        }
+                                        for(let i=0; i<cartOrderMenu.length; i++){
+                                            let cucumber_text = cartOrderMenu[i].getThisCuOutCount > 0 ? `오이x ${cartOrderMenu[i].getThisCuOutCount}개&nbsp` : "";
+                                            let wasabi_text = cartOrderMenu[i].getThisWaOutCount > 0 ? `와사비x ${cartOrderMenu[i].getThisWaOutCount}개&nbsp` : "";
+                                            let cucumber_wasabi_text = cartOrderMenu[i].getThisCuwaOutCount > 0 ? `오이,와사비x ${cartOrderMenu[i].getThisCuwaOutCount}개&nbsp` : "";
+
+                                            let modalOrderHistory = `
+                                                <div id="modal_orderHistory_list" class="modal_orderHistory_list_01">
+                                                    <div class="modal_orderHistory_time_01">${i+1}</div>
+                                                    <div class="modal_orderHistory_name_01">${cartOrderMenu[i].getThisName}</div>
+                                                    <div class="modal_orderHistory_need_01">
+                                                        <span>${cucumber_text}${wasabi_text}</span>
+                                                        <span>${cucumber_wasabi_text}</span>
+                                                    </div>
+                                                    <div class="modal_orderHistory_count_01">${cartOrderMenu[i].getThisCount}개</div>
+                                                    <div class="modal_orderHistory_amount_01">${numberComma(cartOrderMenu[i].getThisPrice)}원</div>
+                                                    <div class="modal_orderHistory_total_01">${numberComma(cartOrderMenu[i].getThisPrice * cartOrderMenu[i].getThisCount)}원</div>
+                                                </div>
+                                            `;
+                                            orderHistoryTotalPrice += cartOrderMenu[i].getThisCount * cartOrderMenu[i].getThisPrice;
+                                            $("#modal_orderHistory_wrap").html($("#modal_orderHistory_wrap").html() + modalOrderHistory);
+                                        }
+                                        $("#modal_orderHistory_total_amount").html(numberComma(orderHistoryTotalPrice));
+                                        for(let i=0; i<mainMenu.length; i++){
+                                            $("#displayWrap"+i).remove();
+                                            $("#modal_checkMenu_list"+i).remove();
+                                            mainMenu[i].setThisCount = 0;
+                                            mainMenu[i].setThisCuOutCount = 0;
+                                            mainMenu[i].setThisWaOutCount = 0;
+                                            mainMenu[i].setThisCuwaOutCount = 0;
+                                        }
+                                        orderHistoryTotalPrice = 0;
+                                        $("#main_cart_total_price").html('0원');
+                                        $("#modal_checkMenu").css("display", "none");
+                                        $("#modal_checkMenu_total_amount").html('0');
+                                        setTimeout(() => {
+                                            console.log("setTimeOut ok");
+                                            $(`.modalOfModal_alert`).css("display", "none");
+                                            $(`.modal_membership_printTel`).val("");
+                                            membershipPrintValue = "";
+                                        }, 1600);
+                                        let sendPhoneNum = $(".modal_membership_printTel").val();
+                                        insertInputVal($(".modal_membership_printTel").val(), orderMenuGetName, totalPrice, addPoint);
+                                        let sendPoint = addPoint;
+                                        checkAjax = false;
+                                        setTimeout(() => {
+                                            if (!checkAjax) {
+                                                $.ajax({
+                                                    url: "/updatePoint",
+                                                    data: {phoneNum: sendPhoneNum, receivePoint: addPoint},
+                                                    method: "POST",
+                                                    dataType: "json",
+                                                }).done((json) => {
+                                                    console.log("send Point!!");
+                                                });
+                                            }
+                                        }, 5000);
+                                    }
+                                }, 3000);
+                            }, 1600);
+                            // 주문내역 내용 삽입 및 합계금액 새로 계산해서 출력
+                        // 회원이 아닐 때
+                        } else {
+                            $('.modal_join_memberShip_ask').css("display","flex");
+                            $('.modalOfModal_alert_member').css("display","flex");
+                            $('.modalOfModal_alert').css("display","none");
+                            $('.modal_join_memberShip_phoneNumber').html($(`.modal_membership_printTel`).val());
+                            membershipPrintValue = "";
+                            // 회원가입 예 버튼
+                            $(".modal_join_memberShip_btn_yes").off("click").on("click", function () {
+                                // "회원가입이 완료되었습니다." 
+                                $(`.modalOfModal_alert_member`).css("display", "none");
+                                $(`.modalOfModal_alert`).css("display", "flex");
+                                $(`.modalOfModal_modal`).append(`${modalOfModalText("membershipComplete")}`);
+                                //카드결제취소시 setTimeout 멈춤
+                                let matchFlag = true;
+                                $(".modal_payment_cardPlease_btn").on("click", () => {
+                                    $(".modal_payment_cardPlease_box").css("display", "none");
+                                    console.log($("#modal_membership_printTel").val());
+                                    $("#modal_membership_printTel").val("");
+                                    membershipPrintValue = "";
+                                    matchFlag = false;
+                                });
+                                setTimeout(() => {
+                                    $(`.modal_join_memberShip_ask`).css("display", "none");
+                                    $(`.modalOfModal_alert_new`).css("display", "none");
+                                    $(`.modalOfModal_alert`).css("display", "none");
+                                    $(".modal_payment_cardPlease_box").css("display", "flex");
+                                    //3초후에 카드삽입창 닫힘
+                                    setTimeout(() => {
+                                        if (matchFlag) {
+                                            $(`.modal_payment_cardPlease_box`).css("display", "none");
+                                            $(`.modal_payment_process_box`).css("display", "flex");
+                                            //결제완료창 - 5초 후에 창이 닫힙니다. 문구(숫자 감소)
+                                            let j = 6;
+                                            let paymentTimeOut = setInterval(() => {
+                                                $(`.modal_payment_clear_desc p:last-child span`).text(`${j}`);
+                                                j--;
+                                            }, 1000);
+                                            //2초후에 결제중 창 닫힘,
+                                            setTimeout(() => {
+                                                $(`.modal_payment_process_box`).css("display", "none");
+                                                $(`.modal_payment_clear_box`).css("display", "flex");
+                                                //5초 후에 완료창 닫히면서 메인화면으로 이동
+                                                setTimeout(() => {
+                                                    $(`.modal_payment_clear_box`).css("display", "none");
+                                                    $(".modal_membership").css("display", "none");
+                                                    $(".modalOfModal_alert_new").css("display", "none");
+                                                    clearInterval(paymentTimeOut);
+                                                }, 4800);
+                                            }, 2000);
+                                            for(let i=0; i<mainMenu.length; i++){
+                                                $("#modal_orderHistory_list").remove();
+                                            }
+                                            orderHistoryTotalPrice = 0;
+                                            // 주문내역 내용 삽입 및 합계금액 새로 계산해서 출력
+                                            for(let i=0; i<mainMenu.length; i++){
+                                                if(mainMenu[i].getThisCount > 0){
+                                                    cartOrderMenu[junCount] = new SangmooCartTable(mainMenu[i].getThisName, mainMenu[i].getThisPrice, mainMenu[i].getThisCount, mainMenu[i].getThisCuOutCount, mainMenu[i].getThisWaOutCount, mainMenu[i].getThisCuwaOutCount);
+                                                    orderMenuGetName.push(mainMenu[i].getThisName);
+                                                    junCount++;
+                                                }
+                                            }
+                                            insertInputVal($(".modal_membership_printTel").val(), orderMenuGetName, totalPrice, addPoint);
+                                            for(let i=0; i<cartOrderMenu.length; i++){
+                                                let cucumber_text = cartOrderMenu[i].getThisCuOutCount > 0 ? `오이x ${cartOrderMenu[i].getThisCuOutCount}개&nbsp` : "";
+                                                let wasabi_text = cartOrderMenu[i].getThisWaOutCount > 0 ? `와사비x ${cartOrderMenu[i].getThisWaOutCount}개&nbsp` : "";
+                                                let cucumber_wasabi_text = cartOrderMenu[i].getThisCuwaOutCount > 0 ? `오이,와사비x ${cartOrderMenu[i].getThisCuwaOutCount}개&nbsp` : "";
+                                                
+                                                let modalOrderHistory = `
+                                                    <div id="modal_orderHistory_list" class="modal_orderHistory_list_01">
+                                                        <div class="modal_orderHistory_time_01">${i+1}</div>
+                                                        <div class="modal_orderHistory_name_01">${cartOrderMenu[i].getThisName}</div>
+                                                        <div class="modal_orderHistory_need_01">
+                                                            <span>${cucumber_text}${wasabi_text}</span>
+                                                            <span>${cucumber_wasabi_text}</span>
+                                                        </div>
+                                                        <div class="modal_orderHistory_count_01">${cartOrderMenu[i].getThisCount}개</div>
+                                                        <div class="modal_orderHistory_amount_01">${numberComma(cartOrderMenu[i].getThisPrice)}원</div>
+                                                        <div class="modal_orderHistory_total_01">${numberComma(cartOrderMenu[i].getThisPrice * cartOrderMenu[i].getThisCount)}원</div>
+                                                    </div>
+                                                `;
+                                                orderHistoryTotalPrice += cartOrderMenu[i].getThisCount * cartOrderMenu[i].getThisPrice;
+                                                $("#modal_orderHistory_wrap").html($("#modal_orderHistory_wrap").html() + modalOrderHistory);
+                                            }
+                                            
+                                            $("#modal_orderHistory_total_amount").html(numberComma(orderHistoryTotalPrice));
+                                            for(let i=0; i<mainMenu.length; i++){
+                                                $("#displayWrap"+i).remove();
+                                                $("#modal_checkMenu_list"+i).remove();
+                                                mainMenu[i].setThisCount = 0;
+                                                mainMenu[i].setThisCuOutCount = 0;
+                                                mainMenu[i].setThisWaOutCount = 0;
+                                                mainMenu[i].setThisCuwaOutCount = 0;
+                                            }
+                                            $("#main_cart_total_price").html('0원');
+                                            $("#modal_checkMenu").css("display", "none");
+                                            $("#modal_checkMenu_total_amount").html('0');
+                                            setTimeout(() => {
+                                                console.log("setTimeOut ok");
+                                                $(`.modalOfModal_alert`).css("display", "none");
+                                                $(`.modal_membership_printTel`).val("");
+                                                membershipPrintValue = "";
+                                            }, 1600);
+                                            orderHistoryTotalPrice = 0;
+                                        }
+                                    }, 3000);
+                                }, 1600);
+                                console.log("im work membership btn yes")
+                                checkAjax = false;
+                                setTimeout(() => {
+                                    console.log("checkAjaxTime is work")
+                                    if (!checkAjax) {
+                                    $.ajax({
+                                        url: "/memberNew",
+                                        data: {phoneNumber: $(".modal_join_memberShip_phoneNumber").html(), memPoint: addPoint},
+                                        method: "POST",
+                                        dataType: "json",
+                                    }).done((json) => {console.log(json.phoneNumber)});
+                                    $(".modal_join_memberShip_ask").css("display", "none");
+                                    }
+                                }, 5000)
+                            });
+                        }
+                    });
+                    // 번호가 유효하지 않을 때 (형식안맞음)
+                } else {
+                    $(`.modalOfModal_alert`).css("display", "flex");
+                    $(`.modalOfModal_modal`).append(`${modalOfModalText("membershipNoExist")}`);
+                    setTimeout(() => {
+                        $(`.modalOfModal_alert`).css("display", "none");
+                        $(`.modal_membership_printTel`).val("");
+                        membershipPrintValue = "";
+                    }, 1600);
+                }
+            });
+            

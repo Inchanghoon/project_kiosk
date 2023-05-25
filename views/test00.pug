@@ -1,0 +1,636 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        script(src="http://code.jquery.com/jquery-latest.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js")
+        link(rel='stylesheet', type="text/css", media="all", href='./css/style00.css')
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet")
+        link(rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css")
+        link(rel="icon", sizes="48x48", type="image/png", href="./images/sangmooFavicon3.png")
+
+        title 5조 키오스크
+        style.
+            .emptyBox{ 
+                position: relative; 
+                left: 0px; top: -46px;
+                width: 200px; height: 55px; background: transparent; z-index: 10;
+                border: 0px solid transparent;
+            }
+    body
+        main
+            header
+                .main_logo_wrap
+                    img(class="main_logo_img", src="./images/logo.png", alt="logoImg")
+                .main_time_wrap
+                    .main_time_date
+                    .main_time_time 
+
+            section.main_table_wrap
+                .main_table_name 테이블명
+                .main_table_number 23
+            
+            section.main_cart_area#main_cart_area 
+                .main_cart_title 장바구니
+                .main_cart_list_area#main_cart_list_area 
+                    
+                .main_cart_total_amount_box 
+                    .main_cart_total_name 합계
+                    .main_cart_total_price#main_cart_total_price 0원
+                .main_cart_order_btn#main_cart_order_btn 주문하기
+
+            section.main_body_area#main_body_area 
+                nav.main_menuBar_area
+                    a.main_menuBar.main_menuBar_menu1(href="#main_menulist_title1") 점심 특선
+                    a.main_menuBar.main_menuBar_menu2(href="#main_menulist_title2") 대표 메뉴
+                    a.main_menuBar.main_menuBar_menu3(href="#main_menulist_title3") 세트 메뉴
+                    a.main_menuBar.main_menuBar_menu4(href="#main_menulist_title4") 단품 메뉴
+                    a.main_menuBar.main_menuBar_menu5(href="#main_menulist_title5") 사시미
+                    a.main_menuBar.main_menuBar_menu6(href="#main_menulist_title6") 사이드
+                    a.main_menuBar.main_menuBar_menu7(href="#main_menulist_title7") 주류
+                article.main_menulist_area#main_menulist_area 
+                    .main_menulist_wrap#main_menulist_wrap_area
+                        .main_menulist_title#main_menulist_title1 점심 특선
+                        .main_menulist_box_area#displayLunchSpecial 
+                            //.main_menulist_box
+                            //    img(class="main_menulist_img", src="./img/lunchSpecialA.jpg", alt="logoImg")
+                            //    .main_menulist_name 점심 특선A (8p)
+                            //    .main_menulist_price_box
+                            //        span.main_menulist_price 9900
+                           
+
+                        .main_menulist_title#main_menulist_title2 대표 메뉴
+                        .main_menulist_box_area#displayMainMenu 
+                           
+                        .main_menulist_title#main_menulist_title3 세트 메뉴
+                        .main_menulist_box_area#displaySetMenu 
+                            
+
+                        .main_menulist_title#main_menulist_title4 단품 메뉴
+                        .main_menulist_box_area#displaySingleMenu 
+                            
+
+                        .main_menulist_title#main_menulist_title5 사시미
+                        .main_menulist_box_area#displaySasimi 
+                            
+
+
+                        .main_menulist_title#main_menulist_title6 사이드
+                        .main_menulist_box_area#displaySideMenu 
+                            
+
+                        .main_menulist_title#main_menulist_title7 주류
+                        .main_menulist_box_area#displayDrinkMenu 
+                            
+
+            footer.main_footer_area
+                .main_staffCall_btn 직원 호출
+                .main_cart_btn#main_cart_call_btn 장바구니
+                .main_orderHistory_btn 주문내역
+
+            //- 직원호출 모달창 시작
+            section#modal_staffCall.modal_staffCall
+                .modal_staffCall_header_box
+                    .modal_staffCall_description 직원 호출 - 무엇을 도와드릴까요?
+                    #modal_staffCall_exist_btn.modal_staffCall_exist_btn 닫기
+                .modal_staffCall_content_box
+                    .modal_staffCall_choiceService_box
+                        .modal_staffCall_choiceService
+                            span 용품
+                            .modal_staffCall_serviceList_box
+                                .modal_staffCall_serviceList 1인세팅
+                                .modal_staffCall_serviceList 넵킨/티슈
+                                .modal_staffCall_serviceList 물티슈
+                                .modal_staffCall_serviceList 젓가락
+                                .modal_staffCall_serviceList 숟가락
+                                .modal_staffCall_serviceList 튀김집게
+                                .modal_staffCall_serviceList.lineOther
+                                    |사시미
+                                    br
+                                    |집게
+                                .modal_staffCall_serviceList 앞치마
+                                .modal_staffCall_serviceList 가위
+                        .modal_staffCall_choiceService
+                            span 리필
+                            .modal_staffCall_serviceList_box
+                                .modal_staffCall_serviceList 단무지
+                                .modal_staffCall_serviceList 초생강
+                                .modal_staffCall_serviceList 무순
+                                .modal_staffCall_serviceList 후식
+                                .modal_staffCall_serviceList 초장/간장
+                                .modal_staffCall_serviceList 김치
+                                .modal_staffCall_serviceList 물
+                                .modal_staffCall_serviceList.lineOther
+                                    |토마토/
+                                    br
+                                    |양파
+                                .modal_staffCall_serviceList 와사비
+                                .modal_staffCall_serviceList 조미김
+                                .modal_staffCall_serviceList 얼음
+                                .modal_staffCall_serviceList 장국
+                        .modal_staffCall_choiceService
+                            span 기타
+                            .modal_staffCall_serviceList_box
+                                .modal_staffCall_serviceList.lineOther 
+                                    |테이블
+                                    br
+                                    |포장
+                                .modal_staffCall_serviceList.lineOther 
+                                    |직원
+                                    br
+                                    |호출하기
+                    .modal_staffCall_showService_box
+                        .modal_staffCall_showChoice_box
+                            .modal_staffCall_guideWord 왼쪽에서<br>요청하실 항목을<br>선택 해 주세요.
+                        
+                        .modal_staffCall_choiceControl_box
+                            #modal_staffCall_removeAll_box.modal_staffCall_choiceControl_btn 전체 삭제
+                            #modal_staffCall_choiceEnd_box.modal_staffCall_choiceControl_btn 요청 하기
+            //- 직원호출 모달창 끝
+
+            //- 메뉴 상세페이지 시작
+            section.modal_selectMenu#modal_selectMenu 
+                .modal_selectMenu_exist_btn 닫기
+                .modal_selectMenu_description_box#modal_selectMenu_description_box 
+                    #insertImg.insertImg 
+                    //img(id="modal_selectMenu_description_img" class="modal_selectMenu_description_img", src="./img/lunchSpecialA.jpg", alt="logoImg")
+                    .modal_selectMenu_description_area
+                        p.modal_selectMenu_name#modal_selectMenu_name 
+                        p.modal_selectMenu_structure#modal_selectMenu_structure 
+                        .modal_selectMenu_option_box 
+                            .modal_selectMenu_option_01.modal_selectMenu_option_all
+                                p.modal_selectMenu_option_description_all 와사비 빼주세요
+                                #modal_selectMenu_option_check_01.modal_selectMenu_option_check_all
+                            .modal_selectMenu_option_02.modal_selectMenu_option_all
+                                p.modal_selectMenu_option_description_all 오이 빼주세요 
+                                #modal_selectMenu_option_check_02.modal_selectMenu_option_check_all
+                        .modal_selectMenu_result_box
+                            span.modal_selectMenu_amount 금액
+                            span.modal_selectMenu_price#modal_selectMenu_price 9,900
+                            span.modal_selectMenu_krw 원
+                        #modal_selectMenu_cart_add_btn 장바구니 담기
+            //- 메뉴 상세페이지 끝
+
+            //- 결제 전 주문 확인페이지 시작
+            .modal_checkMenu#modal_checkMenu 
+                .modal_checkMenu_top
+                    .modal_checkMenu_information_text 주문 내역을 확인해주세요.
+                    .modal_checkMenu_exist_btn 닫기
+                .modal_checkMenu_middle
+                    .modal_checkMenu_list_main
+                        .modal_checkMenu_num_main NO
+                        .modal_checkMenu_name_main 상품명
+                        .modal_checkMenu_need_main 요청사항
+                        .modal_checkMenu_count_main 수량
+                        .modal_checkMenu_amount_main 상품금액
+                        .modal_checkMenu_total_main 주문금액
+                    .midal_checkMenu_list_wrap#modal_checkMenu_list_wrap 
+                        //.modal_checkMenu_list_01
+                        //    .modal_checkMenu_num_01 1
+                        //    .modal_checkMenu_name_01 대표메뉴A
+                        //    .modal_checkMenu_need_01 오이X 와사비X
+                        //    .modal_checkMenu_count_01 12개
+                        //    .modal_checkMenu_amount_01 12,800원
+                        //    .modal_checkMenu_total_01 153,600원
+                .modal_checkMenu_bottom 
+                    .modal_checkMenu_intended_amount 총 주문 금액
+                    .modal_checkMenu_total_amount#modal_checkMenu_total_amount 307,200
+                    .modal_checkMenu_krw 원
+                    //form(id="sendCartTable" action="/sendCart" method="post")
+                    //    input(type="submit" id="modal_selectMenu_add_btn" value="결제하기")
+                    #modal_selectMenu_add_btn 결제하기
+            //- 결제 전 주문 확인페이지 끝
+
+            //- 주문내역 확인 창 시작
+            .modal_orderHistory
+                .modal_orderHistory_top
+                    .modal_orderHistory_text 주문 내역
+                    .modal_orderHistory_exist_btn 닫기
+                .modal_orderHistory_middle
+                    .modal_orderHistory_list_main
+                        .modal_orderHistory_time_main 주문 시간
+                        .modal_orderHistory_name_main 상품명
+                        .modal_orderHistory_count_main 수량
+                        .modal_orderHistory_amount_main 상품금액
+                        .modal_orderHistory_total_main 주문금액
+                    .modal_orderHistory_wrap#modal_orderHistory_wrap 
+                        //.modal_orderHistory_list_01
+                        //    .modal_orderHistory_time_01 오후 12:40:39
+                        //    .modal_orderHistory_name_01 대표 메뉴A
+                        //    .modal_orderHistory_count_01 12개
+                        //    .modal_orderHistory_amount_01 12,800원
+                        //    .modal_orderHistory_total_01 153,600원
+                        //.modal_orderHistory_list_02
+                        //    .modal_orderHistory_time_02 오후 12:40:39
+                        //    .modal_orderHistory_name_02 대표메뉴B
+                        //    .modal_orderHistory_count_02 12개
+                        //    .modal_orderHistory_amount_02 12,800원
+                        //    .modal_orderHistory_total_02 153,600원
+                .modal_orderHistory_bottom 
+                    .modal_orderHistory_intended_amount 총 주문 금액
+                    .modal_orderHistory_total_amount#modal_orderHistory_total_amount 0
+                    .modal_orderHistory_krw 원
+            //- 주문내역 확인 창 끝
+        
+            //- 멤버십 모달창 시작
+            #modal_membership.modal_membership
+                i.xi-angle-left.modal_membership_icon
+                .modal_membership_printArea
+                    .modal_membership_printDesc
+                        p 상무초밥 멤버십
+                        p 적립하실 휴대폰 번호를 입력해 주세요.
+                        .modal_membership_pointPrintArea
+                            span 1111
+                            span p 적립됩니다.
+                        p *적립금액은 결제금액의 0.1%입니다.
+                    .modal_membership_logo_img
+                .modal_membership_enterArea
+                    //- .modal_membership_printTel
+                    input.modal_membership_printTel(maxlength="11", readonly)
+                    .modal_membership_enterTel 
+                        .modal_membership_enter_line
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 1
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 2
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 3
+                        .modal_membership_enter_line
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 4
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 5
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 6
+                        .modal_membership_enter_line
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 7
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 8
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 9
+                        .modal_membership_enter_line
+                            .modal_membership_enter_btn.modal_membership_enter_reset_btn 초기화
+                            .modal_membership_enter_btn.modal_membership_enter_num_btn 0
+                            .modal_membership_enter_btn.modal_membership_enter_delete_btn
+                                i.xi-backspace.modal_membership_backspaceIcon
+                    .modal_membership_control_btn_box
+                        #modal_membership_control_btn_pass.modal_membership_control_btn 건너뛰기
+                        #modal_membership_control_btn_enterFinish.modal_membership_control_btn 입력완료
+            //- 멤버십 모달창 끝
+
+            //- 결제 모달창 시작
+            //- 카드삽입
+            .modal_payment_cardPlease_box
+                .modal_payment_cardPlease
+                    .modal_payment_cardPlease_desc
+                        p 신용카드 결제
+                        p 신용카드를 투입구에 넣어주세요.
+                        p 결제가 완료될 때까지 카드를 빼지 마세요!
+                    .modal_payment_cardPlease_animation
+                        .modal_payment_cardPlease_cardInput1
+                            .modal_payment_cardPlease_cardInput2
+                        .modal_payment_cardPlease_card0
+                            .modal_payment_cardPlease_card1
+                                .modal_payment_cardPlease_card2
+                                    .modal_payment_cardPlease_card3
+                                        .modal_payment_cardPlease_card4
+                    .modal_payment_cardPlease_btn 결제 취소
+            //-결제 중
+            .modal_payment_process_box
+                .modal_payment_process
+                    .modal_payment_process_img
+                    .modal_payment_process_desc
+                        p 결제가 진행 중입니다.
+                        p 잠시만 기다려주세요.
+            //-결제끝
+            .modal_payment_clear_box
+                .modal_payment_clear
+                    .modal_payment_clear_img
+                        .modal_payment_clear_img_circle ✔
+                            .modal_payment_clear_img_anime
+                    .modal_payment_clear_desc
+                        p 결제가 완료되었습니다.
+                        p <span></span>초 후에 창이 닫힙니다.
+                    .modal_payment_clear_btn 확인
+            //- 결제 모달창 끝
+
+
+            //- 모달의 모달 시작
+            .modalOfModal_alert
+                .modalOfModal_modal
+            //- 모달의 모달 끝
+
+
+            //- 시작페이지 (동영상)
+            .modal_intro_video_area
+                .modal_intro_logo_box
+                    img(class="modal_intro_logo_img" src="./images/logo.png")
+                .modal_intro_video_box
+                    video(class="modal_intro_video" src="./images/introVideo.mp4" autoplay loop muted width="857")
+                .modal_intro_pleaseTouchScreen_box
+                    .modal_intro_pleaseTouchScreen 화면을 터치해주세요
+
+
+
+        script(src="./script/kioskProject.js")
+        script.
+            let testBox = document.getElementById("testBox");
+            let testImgSrc = '#{imgSrc}'.split(/,/g);
+            let testMenuName = `#{menuName}`.split(/,/g);
+            let testMenuPrice = '#{menuPrice}'.split(/,/g);
+            let testCategory = '#{menuCategory}'.split(/,/g);
+            let refillStuff = '#{refillStuff}'.split(/,/g);
+            let refillKind = '#{refillKind}'.split(/,/g);
+            let menuInfo = '#{menuInfo}'.split(/,/g);
+            let sampleObj = {};
+            const testClassTable = [];
+            let testClassRefill = [];
+            let totalPrice = 0;
+            //콤마 찍어주는 함수
+            function numberComma(convertNum) {
+                return convertNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            // 받아온 테이블 객체 생성 1. 메뉴 2. 직원 호출
+            for(let i=0; i<testImgSrc.length; i++){
+                testClassTable.push({img: testImgSrc[i], menuA: testMenuName[i], priceA: testMenuPrice[i], category: testCategory[i], infoA: menuInfo[i], countA: 1});
+            }
+            for(let i=0; i<refillStuff.length; i++){
+                if(refillStuff[i] != '' && refillKind[i] != ''){
+                    testClassRefill.push({refill: refillStuff[i], kind: refillKind[i], countB: 1});
+                }
+            }
+            //console.log(testClassRefill);
+            let printTest = "";
+            let printTest2 = "";
+            let modalOff = () => {
+                $("#modal_selectMenu").css("display", "none");
+            }
+            // 장바구니창 출력
+            let arrayIndex = -1;
+            let makeBasket = (checkIndex, arrayIndex) => {
+                if(checkIndex == undefined){
+                    return false;
+                } else {
+                printTest2 = `
+                    <section id="displayWrap${checkIndex}" class="main_cart_list_box">
+                        <div class="main_cart_list_topBox">
+                            <div class="main_cart_list_nameRequireBox">
+                                <div id="displayMenu${checkIndex}" class="main_cart_list_nameBox"></div>
+                                <div class="main_cart_list_requireBox">
+                                    <div class="main_cart_list_require_cucumber">오이x</div>
+                                    <div class="main_cart_list_require_wasabi">와사비x</div>
+                                </div>
+                            </div>
+                                <div class="main_cart_list_deleteBtnBox">
+                                    <button id="deleteBtn${checkIndex}" class="main_cart_list_deleteBtn" name="${arrayIndex}">삭제</button>
+                                </div>
+                        </div>
+                        <div class="main_cart_list_buttomBox">
+                            <div id="calArea${checkIndex}" class="main_cart_list_incDecBox">
+                                <button id="minusBtn${checkIndex}" class="main_cart_list_decBtn">-</button>
+                                <div id="displayCount${checkIndex}" class="main_cart_list_number"></div>
+                                <button id="plusBtn${checkIndex}" class="main_cart_list_incBtn">+</button>
+                            </div>
+                                <div class="main_cart_list_amountBox">
+                                    <div id="displayPrice${checkIndex}" class="main_cart_list_amount_price">0</div>
+                                </div>
+                        </div>
+                    </section>
+                `;
+                $("#main_cart_list_area").html($("#main_cart_list_area").html() + printTest2);
+                }
+            }
+            
+
+            // 카테고리별 메뉴판 출력
+            for(let i=0; i<testImgSrc.length; i++){
+                printTest = `
+                    <article id="menuWrap" class="main_menulist_box">
+                        <img id="menuImg${i}" class="main_menulist_img" src="./images/${testImgSrc[i]}" name="${i}" alt="pic">
+                        <div id="menuName${i}" class="main_menulist_name">${testMenuName[i]}</div>
+                        <div class="main_menulist_price_box">
+                            <div id="menuPrice${i}" class="main_menulist_price">${numberComma(testMenuPrice[i])}원</div>
+                        </div>
+                        <button class="emptyBox" name="${i}"></button>
+                    </article>
+                `;
+                if(testClassTable[i].category == 'lunchSpecial'){
+                    $("#displayLunchSpecial").html($("#displayLunchSpecial").html() + printTest);
+                } else if (testClassTable[i].category == 'mainMenu'){
+                    $("#displayMainMenu").html($("#displayMainMenu").html() + printTest);
+                } else if (testClassTable[i].category == 'sushiSet'){
+                    $("#displaySetMenu").html($("#displaySetMenu").html() + printTest);
+                } else if (testClassTable[i].category == 'singleMenu'){
+                    $("#displaySingleMenu").html($("#displaySingleMenu").html() + printTest);
+                } else if (testClassTable[i].category == 'sasimi'){
+                    $("#displaySasimi").html($("#displaySasimi").html() + printTest);
+                } else if (testClassTable[i].category == 'sideMenu'){
+                    $("#displaySideMenu").html($("#displaySideMenu").html() + printTest);
+                } else if (testClassTable[i].category == 'drinkMenu'){
+                    $("#displayDrinkMenu").html($("#displayDrinkMenu").html() + printTest);
+                }
+            }
+            // 메뉴판 누르면 장바구니창 출력해서 계산
+            //let cartMenuName = [];
+            //let cartMenuCount = [];
+            //let cartMenuPrice = [];
+            let cartSendTable = [];
+            let cartOrderTable = [];
+            let cartCountLength = [];
+            $("article#menuWrap").off("click").on("click", function(e){
+                let checkIndex = e.target.name;
+                if(checkIndex == undefined){
+                    console.log('false');
+                    return false;
+                } else {
+                    let modalImg = `
+                        <img class="modal_selectMenu_description_img" src="./images/${testClassTable[checkIndex].img}" alt="logoImg">
+                    `;
+                    let calPrice = Number(testClassTable[checkIndex].priceA);
+
+                    // 장바구니에 품목 담기
+                    $("#modal_selectMenu_cart_add_btn").off("click").on("click", () => {
+                        // 장바구니에 이미 있는 품목이면 수량만 증가
+                        let i = 0;
+                        arrayIndex++;
+                        while(i<testClassTable.length){
+                            if(testClassTable[checkIndex].menuA == $("#displayMenu"+i).html()){
+                                testClassTable[checkIndex].countA++;
+                                $("#displayCount"+checkIndex).html(testClassTable[checkIndex].countA);
+                                $("#displayPrice"+checkIndex).html(numberComma(Number(testClassTable[checkIndex].priceA) * testClassTable[checkIndex].countA));
+                                totalPrice += Number(testClassTable[checkIndex].priceA);
+                                let printTotalPrice = totalPrice;
+
+                                $("#main_cart_total_price").html( numberComma(totalPrice) + '원');
+                                modalOff();
+                                console.log(false);
+                                return false;
+                            }
+                            i++;
+                        }
+                        //cartOrderTable.push({menuName: testClassTable[checkIndex].menuA, menuCount: testClassTable[checkIndex].countA, price: testClassTable[checkIndex].priceA});
+                        console.log(cartOrderTable);
+                        makeBasket(checkIndex, arrayIndex);
+                        cartCountLength.push(checkIndex);
+                        totalPrice += Number(testClassTable[checkIndex].priceA);
+                        $("#displayMenu"+checkIndex).text(testClassTable[checkIndex].menuA);
+                        $("#displayCount"+checkIndex).html(testClassTable[checkIndex].countA);
+                        $("#displayPrice"+checkIndex).html(numberComma(calPrice * testClassTable[checkIndex].countA) + '원');
+                        $("#main_cart_total_price").text(numberComma(totalPrice) + '원');
+                        modalOff();
+                        let cartWidth = $( '.main_cart_area' ).width();
+                        if( cartWidth == 0 ) {
+                            $('.main_cart_area').css('width', '24rem');
+                            $('.main_cart_area').css('opacity', '1');
+                            $(`.main_menulist_area`).css("width", "43rem")
+                            $('.main_cart_list_area').css('width', '23.5rem');
+                            $(`.main_body_area`).css("width", "61rem")
+                            $(`#main_menulist_wrap_area`).css("width", "43rem")
+                        }
+                        
+                    });
+                    // 수량 더하고 빼기
+                    $(document).off("click", "#plusBtn"+checkIndex).on("click", "#plusBtn"+checkIndex, (e) => {
+                        testClassTable[checkIndex].countA++;
+                        $("#displayPrice"+checkIndex).html(calPrice * testClassTable[checkIndex].countA + '원');
+                        $("#displayPrice"+checkIndex).html(numberComma(calPrice * testClassTable[checkIndex].countA) + '원');
+                        totalPrice += calPrice;
+                        console.log(calPrice);
+                        $("#displayCount"+checkIndex).html(testClassTable[checkIndex].countA);
+                        $("#main_cart_total_price").html(numberComma(totalPrice) + '원');
+                    });
+                    $(document).off("click", "#minusBtn"+checkIndex).on("click", "#minusBtn"+checkIndex, () => {
+                        if(testClassTable[checkIndex].countA === 1){
+                            testClassTable[checkIndex].countA = 1;
+                            calPrice = Number(testClassTable[checkIndex].priceA);
+                            $("#displayPrice"+checkIndex).html(numberComma(calPrice) + '원');
+                            return false;
+                        } else {
+                            testClassTable[checkIndex].countA--;
+                            $("#displayCount"+checkIndex).html(testClassTable[checkIndex].countA);
+                            $("#displayPrice"+checkIndex).html(numberComma(testClassTable[checkIndex].priceA * testClassTable[checkIndex].countA) + '원');
+                            totalPrice -= testClassTable[checkIndex].priceA;
+                            $("#main_cart_total_price").text(numberComma(totalPrice) + '원');
+                        }
+                    });
+                    $("#insertImg").html(modalImg);
+                    $("#modal_selectMenu_name").html(testClassTable[checkIndex].menuA);
+                    $("#modal_selectMenu_structure").html(testClassTable[checkIndex].infoA);
+                    $("#modal_selectMenu_price").html(numberComma(testClassTable[checkIndex].priceA));
+
+
+                    // 결제하기 누르면 메뉴이름, 수량, 가격 테이블로 전송하기
+                    $("#main_cart_order_btn").off("click").on("click", () => {
+                        for(let i=0; i<testClassTable.length; i++){
+                            $("#modal_checkMenu_list"+i).remove();
+                        }
+                        $("#modal_checkMenu_list_wrap").html('');
+                        $(".modal_checkMenu").css("display", "flex");
+                        //- console.log(cartCountLength);
+                        
+                        for(let i=0; i<cartCountLength.length; i++){
+                            cartSendTable.push({menuName: testClassTable[cartCountLength[i]].menuA, menuCount: testClassTable[cartCountLength[i]].countA, price: testClassTable[cartCountLength[i]].priceA});
+                            //let makeFormTag = `
+                            //    <input type="hidden" name="cartMenuName" value="${testClassTable[cartCountLength[i]].menuName}">
+                            //    <input type="hidden" name="cartMenuCount" value="${testClassTable[cartCountLength[i]].menuCount}">
+                            //    <input type="hidden" name="cartPrice" value="${testClassTable[cartCountLength[i]].price}">
+                            //`;
+                            //$("#sendCartTable").html($("#sendCartTable").html() + makeFormTag);
+                            let modalMenuList = `
+                                <div id="modal_checkMenu_list${i}" class="modal_checkMenu_list_01">
+                                    <div class="modal_checkMenu_num_01">${i+1}</div>
+                                    <div id="modal_checkMenu_name${i}" class="modal_checkMenu_name_01">${testClassTable[checkIndex].menuA}</div>
+                                    <div class="modal_checkMenu_need_01">오이x 와사비x</div>
+                                    <div id="modal_checkMenu_count${i}" class="modal_checkMenu_count_01">${testClassTable[checkIndex].countA}개</div>
+                                    <div id="modal_checkMenu_amount${i}" class="modal_checkMenu_amount_01">${numberComma(testClassTable[checkIndex].priceA)}원</div>
+                                    <div id="modal_checkMenu_total${i}" class="modal_checkMenu_total_01">${numberComma(testClassTable[checkIndex].priceA * testClassTable[checkIndex].countA)}원</div>
+                                </div>
+                            `;
+                                    //<div class="modal_checkMenu_num_01">${i+1}</div>
+                                    //<div id="modal_checkMenu_name${i}" class="modal_checkMenu_name_01">${cartSendTable[i].menuName}</div>
+                                    //<div class="modal_checkMenu_need_01">오이x 와사비x</div>
+                                    //<div id="modal_checkMenu_count${i}" class="modal_checkMenu_count_01">${cartSendTable[i].menuCount}개</div>
+                                    //<div id="modal_checkMenu_amount${i}" class="modal_checkMenu_amount_01">${cartSendTable[i].price}원</div>
+                                    //<div id="modal_checkMenu_total${i}" class="modal_checkMenu_total_01">${cartSendTable[i].price * cartSendTable[i].menuCount}원</div>
+                            $("#modal_checkMenu_list_wrap").html($("#modal_checkMenu_list_wrap").html() + modalMenuList);
+                            $("#modal_checkMenu_total_amount").html(numberComma(totalPrice));
+                        };
+                    });
+                    // 장바구니 품목 삭제
+                    $(document).off("click", "#deleteBtn").on("click", "#deleteBtn"+checkIndex, (e) => {
+                        let deleteIndex = e.target.name;
+                        //- console.log(deleteIndex);
+                        //- console.log(cartSendTable);
+                        //- console.log(cartSendTable[1]);
+                        //$("#modal_checkMenu_list${deleteIndex}").remove();
+                        //for(let i=0; i<cartCountLength.length; i++){
+                        //    if(cartCountLength[i] == deleteIndex){
+                        //        cartCountLength.pop();
+                        //    } else {
+                        //        cartCountLength.push(cartCountLength.pop());
+                        //    }
+                        //}
+                        //cartCountLength.splice(checkIndex, 1);
+                        //- console.log(cartCountLength);
+                        //- console.log('delete cartCountLength: ' + cartCountLength.length);
+                        $("#displayWrap"+checkIndex).remove();
+                        //- console.log(calPrice);
+                        totalPrice = totalPrice - (testClassTable[checkIndex].countA * testClassTable[checkIndex].priceA);
+                        $("#main_cart_total_price").text(numberComma(totalPrice) + '원');
+                        testClassTable[checkIndex].countA = 1;
+                    });
+                    $("#modal_selectMenu_add_btn").off("click").on("click", () => {
+                        if(cartCountLength.length == 0){
+                            console.log('장바구니가 비어있습니다.');
+                            return false;
+                        } else {
+                            for(let i=0; i<cartSendTable.length; i++){
+                                $("#modal_orderHistory_list").remove();
+                            }
+                            console.log(cartSendTable);
+                            $("#modal_checkMenu").css("display", "none");
+                            //주문내역 - 주문시간
+                            let payment_time_hour = String(new Date().getHours()).padStart(2, "0");
+                            let payment_ampm = payment_time_hour > 12 ? '오후' : '오전';
+                            payment_time_hour = payment_time_hour >= 12 ? String(payment_time_hour - 12).padStart(2, "0") : payment_time_hour;
+                            let payment_time_minute = String(new Date().getMinutes()).padStart(2, "0");
+                            let payment_time_second = String(new Date().getSeconds()).padStart(2, "0");
+                            let payment_time = `${payment_ampm} ${payment_time_hour}:${payment_time_minute}:${payment_time_second}`
+                            let orderHistoryTotalPrice = 0;
+                            // 주문내역 내용 삽입 및 합계금액 새로 계산해서 출력
+                            for(let i=0; i<cartSendTable.length; i++){
+                                let modalOrderHistory = `
+                                    <div id="modal_orderHistory_list" class="modal_orderHistory_list_01">
+                                        <div class="modal_orderHistory_time_01">${payment_time}</div>
+                                        <div class="modal_orderHistory_name_01">${cartSendTable[i].menuName}</div>
+                                        <div class="modal_orderHistory_count_01">${cartSendTable[i].menuCount}개</div>
+                                        <div class="modal_orderHistory_amount_01">${numberComma(cartSendTable[i].price)}원</div>
+                                        <div class="modal_orderHistory_total_01">${numberComma(cartSendTable[i].price * cartSendTable[i].menuCount)}원</div>
+                                    </div>
+                                `;
+                                orderHistoryTotalPrice += (cartSendTable[i].menuCount * cartSendTable[i].price);
+                                $("#modal_orderHistory_wrap").html($("#modal_orderHistory_wrap").html() + modalOrderHistory);
+                                $("#modal_orderHistory_total_amount").html(orderHistoryTotalPrice);
+                            }
+                            for(let i=0; i<testClassTable.length; i++){
+                                $("#displayWrap"+i).remove();
+                                $("#modal_checkMenu_list"+i).remove();
+                            }
+                            totalPrice = 0;
+                            cartCountLength = [];
+                            $("#main_cart_total_price").html('0원');
+
+                            //결제하기 버튼 누르면 멤버십창 띄우기
+                            $('.modal_checkMenu').css('display', 'none');
+                            $(".modal_membership").css("display", "flex");
+
+                            //$.ajax({
+                            //    type: 'get',
+                            //    url: '../test2.js',
+                            //    data: sendCartTable,
+                            //    dataType: 'pug',
+                            //    success: function(data){
+                            //        console.log('success :' + sendCartTable);
+                            //    }
+                            //});
+
+                        }
+                    });
+                }
+                return false;
+            });
