@@ -1,0 +1,319 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        script(src="http://code.jquery.com/jquery-latest.min.js")
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js")
+        link(rel='stylesheet', type="text/css", media="all", href='./css/style.css')
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet")
+        link(rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css")
+
+        title 5조 키오스크
+        style. 
+            .emptyBox{ 
+                position: relative; 
+                left: 0px; top: -46px;
+                width: 200px; height: 55px; background: transparent; z-index: 100;
+                border: 0px solid transparent;
+            }
+    body
+        main
+            header
+                .main_logo_wrap
+                    img(class="main_logo_img", src="./images/logo.png", alt="logoImg")
+                .main_time_wrap
+                    .main_time_date
+                    .main_time_time 
+
+            section.main_table_wrap
+                .main_table_name 테이블명
+                .main_table_number 23
+            
+            section.main_cart_area
+                .main_cart_title 장바구니
+                .main_cart_list_area#main_cart_list_area 
+                    .main_cart_list_box
+                        .main_cart_list_topBox
+                            .main_cart_list_nameRequireBox
+                                .main_cart_list_nameBox 점심특선 A (8p)
+                                .main_cart_list_requireBox
+                                    .main_cart_list_require_cucumber 오이x
+                                    .main_cart_list_require_wasabi 와사비x
+                            .main_cart_list_deleteBtnBox
+                                button(class="main_cart_list_deleteBtn") 삭제
+                        .main_cart_list_buttomBox
+                            .main_cart_list_incDecBox
+                                button(class="main_cart_list_decBtn") -
+                                input(type="text" class="main_cart_list_number" readonly)
+                                button(class="main_cart_list_incBtn") +
+                            .main_cart_list_amountBox
+                                .main_cart_list_amount_price 1,200,000
+                                .main_cart_list_amount_krw 원
+                .main_cart_order_btn 주문하기
+
+            section.main_body_area
+                nav.main_menuBar_area
+                    a.main_menuBar.main_menuBar_menu1(href="#main_menulist_title1") 점심 특선
+                    a.main_menuBar.main_menuBar_menu2(href="#main_menulist_title2") 대표 메뉴
+                    a.main_menuBar.main_menuBar_menu3(href="#main_menulist_title3") 세트 메뉴
+                    a.main_menuBar.main_menuBar_menu4(href="#main_menulist_title4") 단품 메뉴
+                    a.main_menuBar.main_menuBar_menu5(href="#main_menulist_title5") 사시미
+                    a.main_menuBar.main_menuBar_menu6(href="#main_menulist_title6") 사이드
+                    a.main_menuBar.main_menuBar_menu7(href="#main_menulist_title7") 주류
+                article.main_menulist_area
+                    .main_menulist_wrap#main_menulist_wrap_area
+                        .main_menulist_title#main_menulist_title1 점심 특선
+                        .main_menulist_box_area#displayLunchSpecial 
+                            //.main_menulist_box
+                            //    img(class="main_menulist_img", src="./img/lunchSpecialA.jpg", alt="logoImg")
+                            //    .main_menulist_name 점심 특선A (8p)
+                            //    .main_menulist_price_box
+                            //        span.main_menulist_price 9900
+                           
+
+                        .main_menulist_title#main_menulist_title2 대표 메뉴
+                        .main_menulist_box_area#displayMainMenu 
+                           
+                        .main_menulist_title#main_menulist_title3 세트 메뉴
+                        .main_menulist_box_area#displaySetMenu 
+                            
+
+                        .main_menulist_title#main_menulist_title4 단품 메뉴
+                        .main_menulist_box_area#displaySingleMenu 
+                            
+
+                        .main_menulist_title#main_menulist_title5 사시미
+                        .main_menulist_box_area#displaySasimi 
+                            
+
+
+                        .main_menulist_title#main_menulist_title6 사이드
+                        .main_menulist_box_area#displaySideMenu 
+                            
+
+                        .main_menulist_title#main_menulist_title7 주류
+                        .main_menulist_box_area#displayDrinkMenu 
+                            
+
+
+            footer.main_footer_area
+                .main_staffCall_btn 직원 호출
+                .main_cart_btn#main_cart_call_btn 장바구니
+                .main_orderHistory_btn 주문내역
+
+            //- 직원호출 모달창 시작
+            section#modal_staffCall.modal_staffCall
+                .modal_staffCall_header_box
+                    .modal_staffCall_description 직원 호출 - 무엇을 도와드릴까요?
+                    #modal_staffCall_exist_btn.modal_staffCall_exist_btn 닫기
+                .modal_staffCall_content_box
+                    .modal_staffCall_choiceService_box
+                        .modal_staffCall_choiceService
+                            span 용품
+                            .modal_staffCall_serviceList_box
+                                .modal_staffCall_serviceList 1인세팅
+                                .modal_staffCall_serviceList 넵킨/티슈
+                                .modal_staffCall_serviceList 물티슈
+                                .modal_staffCall_serviceList 젓가락
+                                .modal_staffCall_serviceList 숟가락
+                                .modal_staffCall_serviceList 튀김집게
+                                .modal_staffCall_serviceList.lineOther
+                                    |사시미
+                                    br
+                                    |집게
+                                .modal_staffCall_serviceList 앞치마
+                                .modal_staffCall_serviceList 가위
+                        .modal_staffCall_choiceService
+                            span 리필
+                            .modal_staffCall_serviceList_box
+                                .modal_staffCall_serviceList 단무지
+                                .modal_staffCall_serviceList 초생강
+                                .modal_staffCall_serviceList 무순
+                                .modal_staffCall_serviceList 후식
+                                .modal_staffCall_serviceList 초장/간장
+                                .modal_staffCall_serviceList 김치
+                                .modal_staffCall_serviceList 물
+                                .modal_staffCall_serviceList.lineOther
+                                    |토마토/
+                                    br
+                                    |양파
+                                .modal_staffCall_serviceList 와사비
+                                .modal_staffCall_serviceList 조미김
+                                .modal_staffCall_serviceList 얼음
+                                .modal_staffCall_serviceList 장국
+                        .modal_staffCall_choiceService
+                            span 기타
+                            .modal_staffCall_serviceList_box
+                                .modal_staffCall_serviceList.lineOther 
+                                    |테이블
+                                    br
+                                    |포장
+                                .modal_staffCall_serviceList.lineOther 
+                                    |직원
+                                    br
+                                    |호출하기
+                    .modal_staffCall_showService_box
+                        .modal_staffCall_showChoice_box
+                            .modal_staffCall_guideWord 왼쪽에서<br>요청하실 항목을<br>선택 해 주세요.
+                        
+                        .modal_staffCall_choiceControl_box
+                            #modal_staffCall_removeAll_box.modal_staffCall_choiceControl_btn 전체 삭제
+                            #modal_staffCall_choiceEnd_box.modal_staffCall_choiceControl_btn 요청 하기
+            //- 직원호출 모달창 끝
+
+
+
+            //- 메뉴 상세페이지 시작
+            section.modal_selectMenu
+                .modal_selectMenu_exist_btn 닫기
+                .modal_selectMenu_description_box
+                    img(class="modal_selectMenu_description_img", src="./img/lunchSpecialA.jpg", alt="logoImg")
+                    .modal_selectMenu_description_area
+                        p.modal_selectMenu_name#modla_selectMenu_name 점심 특선 A
+                        p.modal_selectMenu_structure 초밥 8p + 메밀 + 튀김
+                        .modal_selectMenu_option_box
+                            .modal_selectMenu_option_01.modal_selectMenu_option_all
+                                p.modal_selectMenu_option_description_all 와사비 빼주세요
+                                #modal_selectMenu_option_check_01.modal_selectMenu_option_check_all
+                            .modal_selectMenu_option_02.modal_selectMenu_option_all
+                                p.modal_selectMenu_option_description_all 오이 빼주세요 
+                                #modal_selectMenu_option_check_02.modal_selectMenu_option_check_all
+                        .modal_selectMenu_result_box
+                            span.modal_selectMenu_amount 금액
+                            span.modal_selectMenu_price 9,900
+                            span.modal_selectMenu_krw 원
+                        #modal_selectMenu_add_btn 장바구니 담기
+            //- 메뉴 상세페이지 끝
+
+        script. 
+            let testBox = document.getElementById("testBox");
+            let testImgSrc = '#{imgSrc}'.split(/,/g);
+            let testMenuName = `#{menuName}`.split(/,/g);
+            let testMenuPrice = '#{menuPrice}'.split(/,/g);
+            let testCategory = '#{menuCategory}'.split(/,/g);
+            let refillStuff = '#{refillStuff}'.split(/,/g);
+            let refillKind = '#{refillKind}'.split(/,/g);
+            let sampleObj = {};
+            const testClassTable = [];
+            let testClassRefill = [];
+            let totalPrice = 0;
+            // 받아온 테이블 객체 생성 1. 메뉴 2. 직원 호출
+            for(let i=0; i<testImgSrc.length; i++){
+                testClassTable.push({img: testImgSrc[i], menuA: testMenuName[i], priceA: testMenuPrice[i], category: testCategory[i], countA: 1});
+            }
+            for(let i=0; i<refillStuff.length; i++){
+                if(refillStuff[i] != '' && refillKind[i] != ''){
+                    testClassRefill.push({refill: refillStuff[i], kind: refillKind[i], countB: 1});
+                }
+            }
+            let printTest = "";
+            let printTest2 = "";
+            // 장바구니창 예시 출력
+            let makeBasket = (checkIndex) => {
+                printTest2 = `
+                    <div id="displayWrap${checkIndex}" class="main_cart_list_box">
+                        <div class="main_cart_list_topBox>
+                            <div class="main_cart_list_nameRequireBox">
+                                <div id="displayMenu${checkIndex}" class="main_cart_list_nameBox"></div>
+                                <div class="main_cart_list_requireBox">
+                                    <div class="main_cart_list_require_cucumber">오이x</div>
+                                    <div class="main_cart_list_require_wasabi">와사비x</div>
+                                </div>
+                                <div class="main_cart_list_deleteBtnBox">
+                                    <button id="deleteBtn${checkIndex}" class="main_cart_list_deleteBtn">삭제</button>
+                                </div>
+                                <div class="main_cart_list_buttomBox">
+                                    <div id="calArea${checkIndex}" class="main_cart_list_incDecBox">
+                                        <button id="minusBtn${checkIndex}" class="main_cart_list_decBtn">-</button>
+                                        <div id="displayCount${checkIndex}" class="main_cart_list_number"></div>
+                                        <button id="plusBtn${checkIndex}" class="main_cart_list_incBtn">+</button>
+                                    </div>
+                                    <div class="main_cart_list_amountBox">
+                                        <div id="displayPrice${checkIndex}" class="main_cart_list_amount_price">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $("#main_cart_list_area").html($("#main_cart_list_area").html() + printTest2);
+            }
+            let tableLunchSpecial = [];
+            // 카테고리별 메뉴판 출력
+            for(let i=0; i<testImgSrc.length; i++){
+                printTest = `
+                    <article id="menuWrap" class="main_menulist_box">
+                        <img id="menuImg${i}" class="main_menulist_img" src="./images/${testImgSrc[i]}" name="${i}" alt="pic">
+                        <div id="menuName${i}" class="main_menulist_name">${testMenuName[i]}</div>
+                        <div class="main_menulist_price_box">
+                            <div id="menuPrice${i}" class="main_menulist_price">${testMenuPrice[i]}원</div>
+                        </div>
+                        <button class="emptyBox" name="${i}"></button>
+                    </article>
+                `;
+                if(testClassTable[i].category == 'lunchSpecial'){
+                    $("#displayLunchSpecial").html($("#displayLunchSpecial").html() + printTest);
+                } else if (testClassTable[i].category == 'mainMenu'){
+                    $("#displayMainMenu").html($("#displayMainMenu").html() + printTest);
+                } else if (testClassTable[i].category == 'sushiSet'){
+                    $("#displaySetMenu").html($("#displaySetMenu").html() + printTest);
+                } else if (testClassTable[i].category == 'singleMenu'){
+                    $("#displaySingleMenu").html($("#displaySingleMenu").html() + printTest);
+                } else if (testClassTable[i].category == 'sasimi'){
+                    $("#displaySasimi").html($("#displaySasimi").html() + printTest);
+                } else if (testClassTable[i].category == 'sideMenu'){
+                    $("#displaySideMenu").html($("#displaySideMenu").html() + printTest);
+                } else if (testClassTable[i].category == 'drinkMenu'){
+                    $("#displayDrinkMenu").html($("#displayDrinkMenu").html() + printTest);
+                }
+            }
+            // 메뉴판 누르면 장바구니창 출력해서 계산
+            $("article#menuWrap").one("click", function(e){
+                if(e.target.name == undefined){
+                    console.log('false');
+                    return false;
+                } else {
+                    let checkIndex = e.target.name;
+                    makeBasket(checkIndex);
+                    let calPrice = Number(testClassTable[checkIndex].priceA);
+                    //$("#plusBtn"+checkIndex).off();
+                    //$("#minusBtn"+checkIndex).off();
+
+                    totalPrice += Number(testClassTable[checkIndex].priceA);
+                    $("#displayMenu"+checkIndex).text(testClassTable[checkIndex].menuA);
+                    $("#displayCount"+checkIndex).html(testClassTable[checkIndex].countA);
+                    $("#displayPrice"+checkIndex).html(calPrice * testClassTable[checkIndex].countA);
+                    $("#displayTotalPrice").text('합계: ' + totalPrice + '원');
+                    $(document).on("click", "#plusBtn"+checkIndex, (e) => {
+                        testClassTable[checkIndex].countA++;
+                        $("#displayPrice"+checkIndex).html(calPrice * testClassTable[checkIndex].countA);
+                        totalPrice += calPrice;
+                        console.log(calPrice);
+                        $("#displayCount"+checkIndex).html(testClassTable[checkIndex].countA);
+                        $("#displayTotalPrice").text('합계: ' + totalPrice + '원');
+                    });
+                    $(document).on("click", "#minusBtn"+checkIndex, () => {
+                        if(testClassTable[checkIndex].countA === 1){
+                            testClassTable[checkIndex].countA = 1;
+                            calPrice = Number(testClassTable[checkIndex].priceA);
+                            $("#displayPrice"+checkIndex).html(calPrice);
+                            return false;
+                        } else {
+                            testClassTable[checkIndex].countA--;
+                            $("#displayCount"+checkIndex).html(testClassTable[checkIndex].countA);
+                            $("#displayPrice"+checkIndex).html(calPrice * testClassTable[checkIndex].countA);
+                            totalPrice -= calPrice;
+                            $("#displayTotalPrice").text('합계: ' + totalPrice + '원');
+                        }
+                    });
+                    $(document).on("click", "#deleteBtn"+checkIndex, () => {
+                        $("#displayWrap"+checkIndex).remove();
+                        console.log(calPrice);
+                        totalPrice = totalPrice - (testClassTable[checkIndex].countA * testClassTable[checkIndex].priceA);
+                        $("#displayTotalPrice").text('합계: ' + totalPrice + '원');
+                    });
+
+                }
+            });
